@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Board : MonoBehaviour
 {
-  [Header("Prefabs imports")]
+  [Header("Prefabs Imports")]
   [SerializeField]
   private GameObject _tilePrefab;
 
