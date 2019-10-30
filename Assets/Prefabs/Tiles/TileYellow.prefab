@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8310461722914292260}
   - component: {fileID: 1515395633349705956}
   m_Layer: 0
-  m_Name: Tile
+  m_Name: TileYellow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,6 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ac2370b72b9d004c8186790b8b30ee4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _position: {x: 0, y: 0}
+  typeTile: 0
 --- !u!212 &1515395633349705956
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -83,7 +85,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 247c10baf5726af48b4463b7816419dc, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.92, b: 0.016, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

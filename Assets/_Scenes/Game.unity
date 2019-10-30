@@ -149,8 +149,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4129f2e1dfafadb4c899bb41bcfe292a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tilePrefab: {fileID: 1515395633349705955, guid: eb1af6ea225b8634aadc9d77df52e33b,
-    type: 3}
+  _tilesPrefabs:
+  - {fileID: 1515395633349705955, guid: 8854402c84579984fba8abd82ebea6ef, type: 3}
+  - {fileID: 1515395633349705955, guid: 064d38bd628e26b47aba16c401210805, type: 3}
+  - {fileID: 1515395633349705955, guid: 77bad8fe78a4080419ca9f32ea7ef708, type: 3}
+  - {fileID: 1515395633349705955, guid: eb1af6ea225b8634aadc9d77df52e33b, type: 3}
+  - {fileID: 1515395633349705955, guid: 1e65a51f3b2b86d42a3172f43bc3fe6c, type: 3}
   _boardSize: {x: 5, y: 6}
 --- !u!4 &108975920
 Transform:
