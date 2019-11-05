@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _position: {x: 0, y: 0}
-  typeTile: 0
+  typeTile: 2
 --- !u!212 &1515395633349705956
 SpriteRenderer:
   m_ObjectHideFlags: 0
