@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using TileController;
 using UnityEngine;
 
 namespace BoardController
@@ -10,10 +11,9 @@ namespace BoardController
     private List<GameObject> _tilesPrefabs;
 
     [Header("Board Settings")]
-    [SerializeField]
-    private Vector2Int _boardSize;
+    public Vector2Int boardSize;
 
-    private GameObject[,] _boardTiles;
+    public GameObject[,] boardTiles;
 
     // Start is called before the first frame update
     void Start()
@@ -29,18 +29,18 @@ namespace BoardController
 
     void CreateBoard()
     {
-      _boardTiles = new GameObject[_boardSize.x, _boardSize.y];
+      boardTiles = new GameObject[boardSize.x, boardSize.y];
 
       GameObject tilesObs = new GameObject();
       tilesObs.name = "tilesObs";
       tilesObs.transform.SetParent(this.transform);
 
-      GameObject[] lastLine = new GameObject[_boardSize.x];
+      GameObject[] lastLine = new GameObject[boardSize.x];
       GameObject lastTile = null;
 
-      for (int y = 0; y < _boardSize.y; y++)
+      for (int y = 0; y < boardSize.y; y++)
       {
-        for (int x = 0; x < _boardSize.x; x++)
+        for (int x = 0; x < boardSize.x; x++)
         {
           List<GameObject> possibleTile = new List<GameObject>();
           possibleTile.AddRange(_tilesPrefabs);
@@ -50,9 +50,7 @@ namespace BoardController
 
           int randomTile = Random.Range(0, possibleTile.Count);
           GameObject tile = Instantiate(possibleTile[randomTile], tilesObs.transform);
-          tile.name = $"Tile {x}-{y}";
-          tile.transform.position = new Vector2(x, -y);
-          _boardTiles[x, y] = tile;
+          tile.GetComponent<Tile>().setPosition(new Vector2Int(x, y));
 
           lastLine[x] = possibleTile[randomTile];
           lastTile = possibleTile[randomTile];
