@@ -14,12 +14,16 @@ namespace TileController
 
     public TileTypes typeTile;
 
-    private Board board;
+    public Board board;
+
+    void awake()
+    {
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-      board = transform.parent.parent.GetComponent<Board>();
+      board = transform.parent.parent.gameObject.GetComponent<Board>();
     }
 
     // Update is called once per frame
@@ -28,12 +32,17 @@ namespace TileController
       setTileName();
 
       transform.localPosition = new Vector3(_position.x, -(_position.y), transform.localPosition.y);
+
+      if (board != null)
+      {
+        board.boardTiles[_position.x, _position.y] = gameObject;
+      }
     }
 
     #region SetGetPosition
     public void setPosition(Vector2Int position)
     {
-      board.boardTiles[position.x, position.y] = gameObject;
+
       _position = position;
     }
 
