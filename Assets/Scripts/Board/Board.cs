@@ -57,5 +57,23 @@ namespace BoardController
         }
       }
     }
+
+    public GameObject getTileGameObject(Vector2Int position)
+    {
+      if (position.x >= boardSize.x || position.y >= boardSize.y)
+      {
+        return null;
+      }
+      return boardTiles[position.x, position.y].gameObject;
+    }
+
+    public Tile getTileComponent(Vector2Int position)
+    {
+      if (position.x >= boardSize.x || position.y >= boardSize.y || position.x < 0 || position.y < 0)
+      {
+        return null;
+      }
+      return boardTiles[position.x, position.y].GetComponent<Tile>();
+    }
   }
 }

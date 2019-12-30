@@ -11,16 +11,20 @@ public class Picker : MonoBehaviour
 
   Board board;
 
+  private void Awake()
+  {
+    board = GetComponentInParent<Board>();
+  }
+
   // Start is called before the first frame update
   void Start()
   {
-    board = GetComponentInParent<Board>();
   }
 
   // Update is called once per frame
   void Update()
   {
-    transform.localPosition = new Vector3(_position.x, -(_position.y), transform.localPosition.z);
+    transform.localPosition = new Vector3(_position.x + 0.5f, -(_position.y), transform.localPosition.z);
 
     #region Input temporario
     if (Input.GetKeyDown(KeyCode.UpArrow))
@@ -63,10 +67,16 @@ public class Picker : MonoBehaviour
   #region ChangeTilePosition
   void changeTilePosition()
   {
-    board.boardTiles[_position.x, _position.y].GetComponent<Tile>().setPosition(new Vector2Int(_position.x + 1, Mathf.Abs(_position.y)));
-    // board.boardTiles[]
+    Tile tileRight = board.getTileComponent(new Vector2Int(_position.x + 1, _position.y));
+    tileRight.setPosition(new Vector2Int(_position.x, Mathf.Abs(_position.y)));
 
-    board.boardTiles[_position.x + 1, _position.y].GetComponent<Tile>().setPosition(new Vector2Int(_position.x, Mathf.Abs(_position.y)));
+
+    Tile tileLeft = board.getTileComponent(new Vector2Int(_position.x, _position.y));
+    tileLeft.setPosition(new Vector2Int(_position.x + 1, Mathf.Abs(_position.y)));
+
+
+    tileRight.findMatch();
+    tileLeft.findMatch();
   }
   #endregion
 }

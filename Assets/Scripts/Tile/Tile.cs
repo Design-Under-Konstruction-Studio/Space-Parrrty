@@ -14,11 +14,7 @@ namespace TileController
 
     public TileTypes typeTile;
 
-    public Board board;
-
-    void awake()
-    {
-    }
+    Board board;
 
     // Start is called before the first frame update
     void Start()
@@ -39,10 +35,9 @@ namespace TileController
       }
     }
 
-    #region SetGetPosition
+    #region Set/GetPosition
     public void setPosition(Vector2Int position)
     {
-
       _position = position;
     }
 
@@ -59,5 +54,51 @@ namespace TileController
     }
     #endregion
 
+    #region Find Match
+    public void findMatch()
+    {
+      StartCoroutine(findMatchRoutine());
+    }
+
+    IEnumerator findMatchRoutine()
+    {
+      yield return new WaitForSeconds(0.1f);
+      List<Tile> tilesMatch = new List<Tile>();
+
+      tilesMatch.AddRange(findTileDirection(new Vector2Int[2] { Vector2Int.left, Vector2Int.right }));
+      tilesMatch.AddRange(findTileDirection(new Vector2Int[2] { Vector2Int.up, Vector2Int.down }));
+    }
+
+    List<Tile> findTileDirection(Vector2Int[] directions)
+    {
+      List<Tile> tilesMatch = new List<Tile>();
+      tilesMatch.Add(this);
+      for (int i = 0; i < directions.Length; i++)
+      {
+        Tile nextTile = this;
+        for (int e = 0; e < tilesMatch.Count; e++)
+        {
+          nextTile = board.getTileComponent(nextTile._position + directions[i]);
+          if (nextTile == null)
+          {
+            break;
+          }
+          if (nextTile.typeTile == this.typeTile)
+          {
+            tilesMatch.Add(nextTile);
+          }
+        }
+      }
+      if (tilesMatch.Count >= 3)
+      {
+        Debug.Log(tilesMatch.Count + " - " + tilesMatch[0].typeTile);
+        return tilesMatch;
+      }
+      else
+      {
+        return new List<Tile>();
+      }
+    }
+    #endregion
   }
 }
