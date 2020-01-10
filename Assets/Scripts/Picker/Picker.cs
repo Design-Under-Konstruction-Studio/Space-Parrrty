@@ -37,7 +37,10 @@ public class Picker : MonoBehaviour
       moveRight();
 
     if (Input.GetKeyDown(KeyCode.Space))
+    {
+      Debug.Log("1 - PressButton ChangeTile");
       changeTilePosition();
+    }
 
     #endregion
   }
@@ -67,16 +70,25 @@ public class Picker : MonoBehaviour
   #region ChangeTilePosition
   void changeTilePosition()
   {
+    Debug.Log("2 - Enter Function ChangeTilePosition");
     Tile tileRight = board.getTileComponent(new Vector2Int(_position.x + 1, _position.y));
-    tileRight.setPosition(new Vector2Int(_position.x, Mathf.Abs(_position.y)));
-
-
     Tile tileLeft = board.getTileComponent(new Vector2Int(_position.x, _position.y));
-    tileLeft.setPosition(new Vector2Int(_position.x + 1, Mathf.Abs(_position.y)));
 
+    if (tileRight != null && tileRight.canMove)
+    {
+      tileRight.setPosition(new Vector2Int(_position.x, Mathf.Abs(_position.y)));
+      board.boardTiles[_position.x + 1, _position.y] = null;
+      Debug.Log("3 - Change FirstTile");
+      tileRight.findMatch();
+    }
 
-    tileRight.findMatch();
-    tileLeft.findMatch();
+    if (tileLeft != null && tileLeft.canMove)
+    {
+      tileLeft.setPosition(new Vector2Int(_position.x + 1, Mathf.Abs(_position.y)));
+      board.boardTiles[_position.x, _position.y] = null;
+      Debug.Log("3 - Change SecondTile");
+      tileLeft.findMatch();
+    }
   }
   #endregion
 }

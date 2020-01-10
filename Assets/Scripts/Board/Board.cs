@@ -73,7 +73,14 @@ namespace BoardController
       {
         return null;
       }
-      return boardTiles[position.x, position.y].GetComponent<Tile>();
+      GameObject tile = boardTiles[position.x, position.y];
+
+      if (tile == null)
+      {
+        return null;
+      }
+
+      return tile.GetComponent<Tile>();
     }
   }
 }

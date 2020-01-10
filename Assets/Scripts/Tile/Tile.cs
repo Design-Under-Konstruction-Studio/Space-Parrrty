@@ -57,27 +57,40 @@ namespace TileController
     #region Find Match
     public void findMatch()
     {
+      Debug.Log("4 - StartCorroutine findMatch");
       StartCoroutine(findMatchRoutine());
     }
 
     IEnumerator findMatchRoutine()
     {
+      Debug.Log("5 - Enter StartCorroutine findMatch");
+
       yield return new WaitForSeconds(0.1f);
       List<Tile> tilesMatch = new List<Tile>();
 
       tilesMatch.AddRange(findTileDirection(new Vector2Int[2] { Vector2Int.left, Vector2Int.right }));
       tilesMatch.AddRange(findTileDirection(new Vector2Int[2] { Vector2Int.up, Vector2Int.down }));
+
+      foreach (var item in tilesMatch)
+      {
+        Debug.Log($"Destroy: {item.name}");
+        StartCoroutine(item.destroyTile());
+      }
     }
 
     List<Tile> findTileDirection(Vector2Int[] directions)
     {
       List<Tile> tilesMatch = new List<Tile>();
       tilesMatch.Add(this);
+
+      Debug.Log("6 - Enter findDirection");
       for (int i = 0; i < directions.Length; i++)
       {
+        Debug.Log($"{7 + i} - Enter for Direction");
         Tile nextTile = this;
         for (int e = 0; e < tilesMatch.Count; e++)
         {
+          Debug.Log($"{8 + i} - Enter for findTile");
           nextTile = board.getTileComponent(nextTile._position + directions[i]);
           if (nextTile == null)
           {
@@ -98,6 +111,18 @@ namespace TileController
       {
         return new List<Tile>();
       }
+    }
+    #endregion
+
+    #region DestroyObject
+    IEnumerator destroyTile()
+    {
+      canMove = false;
+      Color tileColor = GetComponent<SpriteRenderer>().color;
+      GetComponent<SpriteRenderer>().color = new Color(tileColor.r, tileColor.g, tileColor.b, 0.5f);
+      yield return new WaitForSeconds(5);
+      board.boardTiles[_position.x, _position.y] = null;
+      Destroy(gameObject);
     }
     #endregion
   }
