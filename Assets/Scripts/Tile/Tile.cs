@@ -71,12 +71,10 @@ namespace TileController {
         Tile nextTile = this;
         for (int e = 0; e < tilesMatch.Count; e++) {
           nextTile = board.getTileComponent (nextTile._position + directions[i]);
-          if (nextTile == null) {
+          if (nextTile == null || nextTile.typeTile != this.typeTile) {
             break;
           }
-          if (nextTile.typeTile == this.typeTile) {
-            tilesMatch.Add (nextTile);
-          }
+          tilesMatch.Add (nextTile);
         }
       }
       if (tilesMatch.Count >= 3) {
