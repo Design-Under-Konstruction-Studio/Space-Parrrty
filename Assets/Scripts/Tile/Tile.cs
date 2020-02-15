@@ -72,7 +72,6 @@ namespace TileController {
       // Um Pequeno LOG
       // Debug.Log("Tile: " + nextTile.name + " type: " + nextTile.typeTile + " - Match: " + 1 + " " + directions[i].ToString());
 
-      // Me superei xD
       for (int i = 0; i < directions.Length; i++) {
         List<Tile> tilesDirectionMatch = new List<Tile>();
         Tile nextTile = this;
