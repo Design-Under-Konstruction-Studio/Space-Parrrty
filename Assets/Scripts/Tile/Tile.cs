@@ -11,6 +11,8 @@ namespace TileController {
 
     public bool canMove = true;
 
+    public bool inMatch = false;
+
     public TileTypes typeTile;
 
     Board board;
@@ -34,7 +36,6 @@ namespace TileController {
       if (board != null) {
         board.boardTiles[position.x, position.y] = gameObject;
       }
-
     }
 
     public Vector2Int getPosition() {
@@ -55,6 +56,7 @@ namespace TileController {
 
     IEnumerator findMatchRoutine() {
       yield return new WaitForSeconds(0.1f);
+      fallTile();
       List<Tile> tilesMatch = new List<Tile>();
 
       tilesMatch.AddRange(findTileDirection(new Vector2Int[2] { Vector2Int.left, Vector2Int.right }));
@@ -92,18 +94,36 @@ namespace TileController {
     #endregion
 
     #region FallTile
-    void fallTile() {
-      // #ToDo
+    public void fallTile() {
+      Vector2Int bottomPosition = this._position + Vector2Int.up;
+      if (bottomPosition.y < board.boardSize.y) {
+        Tile bottomTile = board.getTileComponent(this._position + Vector2Int.up);
+        Tile upTile = board.getTileComponent(this._position + Vector2Int.down);
+        if (bottomTile == null) {
+          board.boardTiles[_position.x, _position.y] = null;
+          setPosition(bottomPosition);
+          if (upTile != null) {
+            upTile.fallTile();
+          }
+          fallTile();
+        }
+      }
     }
     #endregion
 
     #region DestroyObject
     IEnumerator destroyTile() {
       canMove = false;
+      inMatch = true;
       Color tileColor = GetComponent<SpriteRenderer>().color;
       GetComponent<SpriteRenderer>().color = new Color(tileColor.r, tileColor.g, tileColor.b, 0.5f);
       yield return new WaitForSeconds(5);
       board.boardTiles[_position.x, _position.y] = null;
+      Tile upTile = board.getTileComponent(this._position + Vector2Int.down);
+
+      if (upTile != null) {
+        upTile.fallTile();
+      }
       Destroy(gameObject);
     }
     #endregion
