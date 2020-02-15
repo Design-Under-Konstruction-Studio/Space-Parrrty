@@ -76,23 +76,13 @@ namespace TileController {
       for (int i = 0; i < directions.Length; i++) {
         List<Tile> tilesDirectionMatch = new List<Tile>();
         Tile nextTile = this;
-        nextTile = board.getTileComponent(nextTile._position + directions[i]);
-        if (nextTile == null) {
-          continue;
-        }
-        if (nextTile.typeTile == this.typeTile) {
-          tilesDirectionMatch.Add(nextTile);
-        }
-        for (int e = 0; e < tilesDirectionMatch.Count; e++) {
+        for (int e = 0; e < tilesMatch.Count; e++) {
           nextTile = board.getTileComponent(nextTile._position + directions[i]);
-          if (nextTile == null) {
+          if (nextTile == null || nextTile.typeTile != this.typeTile) {
             break;
           }
-          if (nextTile.typeTile == this.typeTile) {
-            tilesDirectionMatch.Add(nextTile);
-          }
+          tilesMatch.Add(nextTile);
         }
-        tilesMatch.AddRange(tilesDirectionMatch);
       }
       if (tilesMatch.Count > 2) {
         return tilesMatch;
