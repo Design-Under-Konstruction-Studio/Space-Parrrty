@@ -24,15 +24,16 @@ namespace TileController {
       setTileName ();
 
       transform.localPosition = new Vector3 (_position.x, -(_position.y), transform.localPosition.y);
-
-      if (board != null) {
-        board.boardTiles[_position.x, _position.y] = gameObject;
-      }
     }
 
     #region Set/GetPosition
     public void setPosition (Vector2Int position) {
       _position = position;
+
+      if (board != null) {
+        board.boardTiles[position.x, position.y] = gameObject;
+      }
+
     }
 
     public Vector2Int getPosition () {
@@ -89,14 +90,7 @@ namespace TileController {
 
     #region FallTile
     void fallTile () {
-      if (board.getTileComponent (_position + Vector2Int.up) == null && _position.y + 1 < board.boardSize.y) {
-        board.boardTiles[_position.x, _position.y] = null;
-        Tile tileUp = board.getTileComponent (_position + Vector2Int.down);
-        setPosition (_position + Vector2Int.up);
-        if (tileUp != null)
-          tileUp.fallTile ();
-        fallTile ();
-      }
+      // #ToDo
     }
     #endregion
 
@@ -107,9 +101,6 @@ namespace TileController {
       GetComponent<SpriteRenderer> ().color = new Color (tileColor.r, tileColor.g, tileColor.b, 0.5f);
       yield return new WaitForSeconds (5);
       board.boardTiles[_position.x, _position.y] = null;
-      if (board.getTileComponent (_position + Vector2Int.down) != null) {
-        board.getTileComponent (_position + Vector2Int.down).fallTile ();
-      }
       Destroy (gameObject);
     }
     #endregion

@@ -61,15 +61,19 @@ public class Picker : MonoBehaviour {
     Tile tileRight = board.getTileComponent (new Vector2Int (_position.x + 1, _position.y));
     Tile tileLeft = board.getTileComponent (new Vector2Int (_position.x, _position.y));
 
-    if (tileRight != null && tileRight.canMove) {
-      tileRight.setPosition (new Vector2Int (_position.x, Mathf.Abs (_position.y)));
-      board.boardTiles[_position.x + 1, _position.y] = null;
-      tileRight.findMatch ();
-    }
+    if ((tileLeft != null && tileLeft.canMove) && (tileRight != null && tileRight.canMove)) {
+      tileLeft.setPosition (new Vector2Int (_position.x + 1, _position.y));
+      tileRight.setPosition (new Vector2Int (_position.x, _position.y));
 
-    if (tileLeft != null && tileLeft.canMove) {
-      tileLeft.setPosition (new Vector2Int (_position.x + 1, Mathf.Abs (_position.y)));
+      tileRight.findMatch ();
+      tileLeft.findMatch ();
+    } else if (tileLeft == null && (tileRight != null && tileRight.canMove)) {
+      board.boardTiles[_position.x + 1, _position.y] = null;
+      tileRight.setPosition (new Vector2Int (_position.x, _position.y));
+      tileRight.findMatch ();
+    } else if ((tileLeft != null && tileLeft.canMove) && tileRight == null) {
       board.boardTiles[_position.x, _position.y] = null;
+      tileLeft.setPosition (new Vector2Int (_position.x + 1, _position.y));
       tileLeft.findMatch ();
     }
   }
