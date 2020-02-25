@@ -79,7 +79,7 @@ namespace TileController {
         Tile nextTile = this;
         for (int e = 0; e < tilesMatch.Count; e++) {
           nextTile = board.getTileComponent(nextTile._position + directions[i]);
-          if (nextTile == null || nextTile.typeTile != this.typeTile) {
+          if (nextTile == null || nextTile.typeTile != this.typeTile || nextTile.inMatch) {
             break;
           }
           tilesMatch.Add(nextTile);
@@ -117,7 +117,7 @@ namespace TileController {
       inMatch = true;
       Color tileColor = GetComponent<SpriteRenderer>().color;
       GetComponent<SpriteRenderer>().color = new Color(tileColor.r, tileColor.g, tileColor.b, 0.5f);
-      yield return new WaitForSeconds(5);
+      yield return new WaitForSeconds(2);
       board.boardTiles[_position.x, _position.y] = null;
       Tile upTile = board.getTileComponent(this._position + Vector2Int.down);
 
