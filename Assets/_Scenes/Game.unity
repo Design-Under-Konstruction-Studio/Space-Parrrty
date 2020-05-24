@@ -156,6 +156,7 @@ MonoBehaviour:
   - {fileID: 1515395633349705955, guid: eb1af6ea225b8634aadc9d77df52e33b, type: 3}
   - {fileID: 1515395633349705955, guid: 1e65a51f3b2b86d42a3172f43bc3fe6c, type: 3}
   boardSize: {x: 5, y: 6}
+  isStart: 0
 --- !u!4 &108975920
 Transform:
   m_ObjectHideFlags: 0

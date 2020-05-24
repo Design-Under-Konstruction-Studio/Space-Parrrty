@@ -22,14 +22,7 @@ public class Picker : MonoBehaviour {
     transform.localPosition = new Vector3(_position.x + 0.5f, -(_position.y), transform.localPosition.z);
 
     #region Input temporario
-    if (Input.GetKeyDown(KeyCode.UpArrow))
-      moveUp();
-    if (Input.GetKeyDown(KeyCode.LeftArrow))
-      moveLeft();
-    if (Input.GetKeyDown(KeyCode.DownArrow))
-      moveDown();
-    if (Input.GetKeyDown(KeyCode.RightArrow))
-      moveRight();
+    getInputKeyDownMoving();
 
     if (Input.GetKeyDown(KeyCode.Space)) {
       changeTilePosition();
@@ -37,22 +30,48 @@ public class Picker : MonoBehaviour {
 
     #endregion
   }
-
+  
   #region Movimentação
-  public void moveLeft() {
-    _position = new Vector2Int(--_position.x, _position.y);
+  bool canMovePosition(Vector2Int newPosition) {
+    if(newPosition.x < board.boardSize.x - 1 && newPosition.y < board.boardSize.y && 
+        newPosition.x >= 0 && newPosition.y >= 0) {
+      return true;
+    }
+    
+    return false;
   }
 
-  public void moveRight() {
-    _position = new Vector2Int(++_position.x, _position.y);
+  void getInputKeyDownMoving() {
+    Vector2Int newPosition = new Vector2Int(_position.x, _position.y);
+    
+    if (Input.GetKeyDown(KeyCode.UpArrow))
+      newPosition = moveUp();
+    if (Input.GetKeyDown(KeyCode.LeftArrow))
+      newPosition = moveLeft();
+    if (Input.GetKeyDown(KeyCode.DownArrow))
+      newPosition = moveDown();
+    if (Input.GetKeyDown(KeyCode.RightArrow))
+      newPosition = moveRight();
+
+    if(canMovePosition(newPosition)){
+      _position = newPosition;
+    }
   }
 
-  public void moveUp() {
-    _position = new Vector2Int(_position.x, --_position.y);
+  public Vector2Int moveLeft() {
+    return new Vector2Int(_position.x-1, _position.y);
   }
 
-  public void moveDown() {
-    _position = new Vector2Int(_position.x, ++_position.y);
+  public Vector2Int moveRight() {
+    return new Vector2Int(_position.x+1, _position.y);
+  }
+
+  public Vector2Int moveUp() {
+    return new Vector2Int(_position.x, _position.y-1);
+  }
+
+  public Vector2Int moveDown() {
+    return new Vector2Int(_position.x, _position.y+1);
   }
   #endregion
 
