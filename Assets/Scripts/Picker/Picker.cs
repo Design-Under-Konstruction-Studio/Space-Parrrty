@@ -33,7 +33,7 @@ public class Picker : MonoBehaviour {
   
   #region Movimentação
   bool canMovePosition(Vector2Int newPosition) {
-    if(newPosition.x < board.boardSize.x - 1 && newPosition.y < board.boardSize.y && 
+    if(newPosition.x < board.boardSize.x - 1 && newPosition.y < board.bottomOfBoard+1 && 
         newPosition.x >= 0 && newPosition.y >= 0) {
       return true;
     }
@@ -82,7 +82,7 @@ public class Picker : MonoBehaviour {
 
     Tile tileRight = board.getTileComponent(rightPosition);
     Tile tileLeft = board.getTileComponent(leftPosition);
-
+    
     if ((tileLeft != null && tileLeft.canMove) && (tileRight != null && tileRight.canMove)) {
       tileLeft.setPosition(rightPosition);
       tileRight.setPosition(leftPosition);

@@ -19,7 +19,7 @@ namespace TileController {
 
     // Start is called before the first frame update
     void Start() {
-      board = transform.parent.parent.gameObject.GetComponent<Board>();
+      board = transform.parent.parent.parent.gameObject.GetComponent<Board>();
     }
 
     // Update is called once per frame
@@ -96,7 +96,7 @@ namespace TileController {
     #region FallTile
     public void fallTile() {
       Vector2Int bottomPosition = this._position + Vector2Int.up;
-      if (bottomPosition.y < board.boardSize.y) {
+      if (bottomPosition.y < board.bottomOfBoard) {
         Tile bottomTile = board.getTileComponent(this._position + Vector2Int.up);
         Tile upTile = board.getTileComponent(this._position + Vector2Int.down);
         if (bottomTile == null) {
