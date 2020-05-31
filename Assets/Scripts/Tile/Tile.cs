@@ -26,7 +26,7 @@ namespace TileController {
     void Update() {
       setTileName();
 
-      transform.localPosition = new Vector3(_position.x, -(_position.y), transform.localPosition.y);
+      transform.localPosition = new Vector3(_position.x, -(_position.y), 0);
     }
 
     #region Set/GetPosition

@@ -159,6 +159,8 @@ MonoBehaviour:
   startTileSize: {x: 5, y: 5}
   topOfBoard: 0
   bottomOfBoard: 0
+  lowerTilePosition: {x: 0, y: 0, z: 0}
+  bottomOfBoardOffSet: 0
   boardTransform: {fileID: 1587750822}
   moveUpSpeed: 0.2
 --- !u!4 &108975920

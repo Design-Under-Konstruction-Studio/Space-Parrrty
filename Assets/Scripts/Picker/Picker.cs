@@ -33,7 +33,7 @@ public class Picker : MonoBehaviour {
   
   #region Movimentação
   bool canMovePosition(Vector2Int newPosition) {
-    if(newPosition.x < board.boardSize.x - 1 && newPosition.y < board.bottomOfBoard+1 && 
+    if(newPosition.x < board.boardSize.x - 1 && newPosition.y < board.bottomOfBoard && 
         newPosition.x >= 0 && newPosition.y >= 0) {
       return true;
     }
@@ -109,7 +109,6 @@ public class Picker : MonoBehaviour {
       tileLeftUp.fallTile();
       tileLeftUp.findMatch();
     }
-
   }
   #endregion
 }
