@@ -32,8 +32,8 @@ namespace BoardController {
 
     // Update is called once per frame
     void FixedUpdate() {
-      // if(Input.GetKeyDown(KeyCode.Z))
-      //   createDownLine();
+      if(Input.GetKeyDown(KeyCode.Z))
+        createUpLine();
 
       moveBoardUp();
     }
@@ -98,8 +98,6 @@ namespace BoardController {
     public void createDownLine() {
       List<GameObject> lastLine = getTileLineGameObject(bottomOfBoardOffSet-1);
       GameObject lastTile = null;
-
-      Debug.Log(lastLine[0].name);
       
       for (int x = 0; x < boardSize.x; x++) {
         List<GameObject> possibleTile = new List<GameObject>();
@@ -119,23 +117,33 @@ namespace BoardController {
 
       bottomOfBoardOffSet++;
       bottomOfBoard++;
+      topOfBoard++;
     }
 
     public void createUpLine() {
+      for (int x = 0; x < boardSize.x; x++) {
+        List<GameObject> possibleTile = new List<GameObject>();
 
+        possibleTile.AddRange(_tilesPrefabs);
+
+        int randomTile = Random.Range(0, possibleTile.Count);
+        GameObject tile = Instantiate(possibleTile[randomTile], new Vector3(100, 100, 100), Quaternion.identity, tilesObjects.transform);
+        tile.GetComponent<Tile>().setPosition(new Vector2Int(x, bottomOfBoardOffSet));
+        boardTiles[x, bottomOfBoardOffSet] = tile;
+      }
     }
 
     #region Gettter Tiles
 
     public GameObject getTileGameObject(Vector2Int position) {
-      if (position.x >= boardSize.x || position.y >= bottomOfBoard) {
+      if (position.x >= topOfBoard || position.y >= bottomOfBoard) {
         return null;
       }
       return boardTiles[position.x, position.y].gameObject;
     }
 
     public Tile getTileComponent(Vector2Int position) {
-      if (position.x >= boardSize.x || position.y >= bottomOfBoard || position.x < 0 || position.y < 0) {
+      if (position.x >= topOfBoard || position.y >= bottomOfBoard || position.x < 0 || position.y < 0) {
         return null;
       }
       GameObject tile = boardTiles[position.x, position.y];

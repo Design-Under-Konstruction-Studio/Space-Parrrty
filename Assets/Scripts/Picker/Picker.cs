@@ -33,8 +33,11 @@ public class Picker : MonoBehaviour {
   
   #region Movimentação
   bool canMovePosition(Vector2Int newPosition) {
-    if(newPosition.x < board.boardSize.x - 1 && newPosition.y < board.bottomOfBoard && 
-        newPosition.x >= 0 && newPosition.y >= 0) {
+    if(newPosition.x < board.boardSize.x - 1 && 
+      newPosition.y < board.bottomOfBoard && 
+      newPosition.x >= 0 && 
+      newPosition.y >= board.topOfBoard
+    ) {
       return true;
     }
     
