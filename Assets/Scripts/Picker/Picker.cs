@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using BoardController;
+using Board;
 using TileController;
 using UnityEngine;
 
@@ -8,10 +8,10 @@ public class Picker : MonoBehaviour {
   [SerializeField]
   private Vector2Int _position;
 
-  Board board;
+  BoardController board;
 
   private void Awake() {
-    board = GetComponentInParent<Board>();
+    board = GetComponentInParent<BoardController>();
   }
 
   // Start is called before the first frame update
@@ -36,7 +36,8 @@ public class Picker : MonoBehaviour {
     if(newPosition.x < board.boardSize.x - 1 && 
       newPosition.y < board.bottomOfBoard && 
       newPosition.x >= 0 && 
-      newPosition.y >= board.topOfBoard
+      newPosition.y >= board.topOfBoard &&
+      board.boardStatusTypes == BoardStatusTypes.start
     ) {
       return true;
     }

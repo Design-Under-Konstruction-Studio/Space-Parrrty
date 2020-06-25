@@ -130,6 +130,7 @@ GameObject:
   m_Component:
   - component: {fileID: 108975920}
   - component: {fileID: 108975919}
+  - component: {fileID: 108975921}
   m_Layer: 0
   m_Name: Board
   m_TagString: Untagged
@@ -146,18 +147,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 108975918}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4129f2e1dfafadb4c899bb41bcfe292a, type: 3}
+  m_Script: {fileID: 11500000, guid: 4c7f31407a13be0418cfbb0e564e110f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tilesPrefabs:
-  - {fileID: 1515395633349705955, guid: 8854402c84579984fba8abd82ebea6ef, type: 3}
-  - {fileID: 1515395633349705955, guid: 064d38bd628e26b47aba16c401210805, type: 3}
-  - {fileID: 1515395633349705955, guid: 77bad8fe78a4080419ca9f32ea7ef708, type: 3}
-  - {fileID: 1515395633349705955, guid: eb1af6ea225b8634aadc9d77df52e33b, type: 3}
-  - {fileID: 1515395633349705955, guid: 1e65a51f3b2b86d42a3172f43bc3fe6c, type: 3}
+  boardStatusTypes: 0
   boardSize: {x: 5, y: 8}
-  startTileSize: {x: 5, y: 5}
+  tilesObjects: {fileID: 0}
   topOfBoard: 0
+  higherTilePosition: {x: 0, y: 0, z: 0}
   bottomOfBoard: 0
   lowerTilePosition: {x: 0, y: 0, z: 0}
   bottomOfBoardOffSet: 0
@@ -178,6 +175,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &108975921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108975918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 892f8d1708f349242bc76786e252c116, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tilesPrefabs:
+  - {fileID: 1515395633349705955, guid: 8854402c84579984fba8abd82ebea6ef, type: 3}
+  - {fileID: 1515395633349705955, guid: 064d38bd628e26b47aba16c401210805, type: 3}
+  - {fileID: 1515395633349705955, guid: 77bad8fe78a4080419ca9f32ea7ef708, type: 3}
+  - {fileID: 1515395633349705955, guid: eb1af6ea225b8634aadc9d77df52e33b, type: 3}
+  - {fileID: 1515395633349705955, guid: 1e65a51f3b2b86d42a3172f43bc3fe6c, type: 3}
+  startTileSize: {x: 5, y: 6}
 --- !u!1 &518052990
 GameObject:
   m_ObjectHideFlags: 0
@@ -213,7 +229,7 @@ Camera:
   m_GameObject: {fileID: 518052990}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
+  m_ClearFlags: 2
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
