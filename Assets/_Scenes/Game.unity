@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 108975920}
   - component: {fileID: 108975919}
   - component: {fileID: 108975921}
+  - component: {fileID: 108975922}
   m_Layer: 0
   m_Name: Board
   m_TagString: Untagged
@@ -194,6 +195,18 @@ MonoBehaviour:
   - {fileID: 1515395633349705955, guid: eb1af6ea225b8634aadc9d77df52e33b, type: 3}
   - {fileID: 1515395633349705955, guid: 1e65a51f3b2b86d42a3172f43bc3fe6c, type: 3}
   startTileSize: {x: 5, y: 6}
+--- !u!114 &108975922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108975918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e153beb73a6f1e44834dba1f5ec30ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &518052990
 GameObject:
   m_ObjectHideFlags: 0
