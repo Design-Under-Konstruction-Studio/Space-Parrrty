@@ -160,7 +160,7 @@ MonoBehaviour:
   lowerTilePosition: {x: 0, y: 0, z: 0}
   bottomOfBoardOffSet: 0
   boardTransform: {fileID: 1587750822}
-  moveUpSpeed: 0.2
+  moveUpSpeed: 0
 --- !u!4 &108975920
 Transform:
   m_ObjectHideFlags: 0
@@ -169,7 +169,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 108975918}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -4.84, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1587750823}
