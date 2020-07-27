@@ -141,7 +141,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7876034784210537726}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 1.5, y: -4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7876034783587837740}
@@ -160,6 +160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _position: {x: 1, y: 4}
+  board: {fileID: 7876034784261199780}
 --- !u!212 &7876034784210537724
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -265,6 +266,36 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 7e8bc24d-c568-4f72-8801-f88d563c1d3b
     m_ActionName: Control/Change Tile[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7876034784261199802}
+        m_MethodName: onPlayerJoined
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 62c83797-558a-4efb-be87-2ef150396e7f
+    m_ActionName: Control/Join[/Keyboard/enter]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7876034784261199780}
+        m_MethodName: onPlayerReady
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 4d8e8377-9b6f-499e-bbd5-46161ffb7606
+    m_ActionName: Control/Change Board State[/Keyboard/z]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Control
@@ -317,7 +348,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c7f31407a13be0418cfbb0e564e110f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boardStatusTypes: 2
+  boardStatusTypes: 0
   boardSize: {x: 5, y: 8}
   tilesObjects: {fileID: 0}
   topOfBoard: 0

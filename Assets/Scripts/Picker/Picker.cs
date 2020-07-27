@@ -10,28 +10,13 @@ public class Picker : MonoBehaviour
     [SerializeField]
     private Vector2Int _position;
 
-    BoardController board;
+    [SerializeField]
+    private BoardController board;
 
     private void Awake()
     {
         board = GetComponentInParent<BoardController>();
-        transform.localPosition = new Vector3(_position.x + 0.5f, -(_position.y), transform.localPosition.z);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        #region Input temporario
-        // Obsoleto caso as alterações propostas sejam aceitas
-        // TODO: Remover após validação na revisão
-        // transform.localPosition = new Vector3(_position.x + 0.5f, -(_position.y), transform.localPosition.z);
-        // getInputKeyDownMoving(); 
-        // if (Input.GetKeyDown(KeyCode.Space))
-        // {
-        //     changeTilePosition();
-        // }
-
-        #endregion
+        transform.localPosition = new Vector3(_position.x + 0.5f, -_position.y, transform.localPosition.z);
     }
 
     #region Movimentação
@@ -50,69 +35,23 @@ public class Picker : MonoBehaviour
         return false;
     }
 
-    // Esse método pode ser utilizado para enxugar o método abaixo dele.
-    // TODO: Remover os métodos comentados após a validação da revisão.
     public void move(InputAction.CallbackContext ctx)
     {
-        if (ctx.phase == InputActionPhase.Started)
+        if (ctx.performed)
         {
             Vector2Int movementDirection = new Vector2Int((int)ctx.ReadValue<Vector2>().x, -(int)ctx.ReadValue<Vector2>().y);
             Vector2Int newPosition = getNewPosition(movementDirection);
-            Debug.Log(newPosition);
             if (canMovePosition(newPosition))
             {
                 _position = newPosition;
-                transform.localPosition = new Vector3(_position.x + 0.5f, -(_position.y), transform.localPosition.z);
+                transform.localPosition = new Vector3(_position.x + 0.5f, -_position.y, transform.localPosition.z);
             }
         }
     }
-
-    // void getInputKeyDownMoving()
-    // {
-    //     Vector2Int newPosition = new Vector2Int(_position.x, _position.y);
-
-    //     if (Input.GetKeyDown(KeyCode.UpArrow))
-    //         newPosition = moveUp();
-    //     if (Input.GetKeyDown(KeyCode.LeftArrow))
-    //         newPosition = moveLeft();
-    //     if (Input.GetKeyDown(KeyCode.DownArrow))
-    //         newPosition = moveDown();
-    //     if (Input.GetKeyDown(KeyCode.RightArrow))
-    //         newPosition = moveRight();
-
-    //     if (canMovePosition(newPosition))
-    //     {
-    //         _position = newPosition;
-    //     }
-    // }
-
-    // Esse método pode ser utilizado para enxugar os 4 métodos abaixo dele.
-    // TODO: Remover os métodos comentados após a validação da revisão.
     public Vector2Int getNewPosition(Vector2Int movementDirection)
     {
-        //Debug.Log(movementDirection);
         return _position + movementDirection;
     }
-
-    // public Vector2Int moveLeft()
-    // {
-    //     return new Vector2Int(_position.x - 1, _position.y);
-    // }
-
-    // public Vector2Int moveRight()
-    // {
-    //     return new Vector2Int(_position.x + 1, _position.y);
-    // }
-
-    // public Vector2Int moveUp()
-    // {
-    //     return new Vector2Int(_position.x, _position.y - 1);
-    // }
-
-    // public Vector2Int moveDown()
-    // {
-    //     return new Vector2Int(_position.x, _position.y + 1);
-    // }
     #endregion
 
     #region ChangeTilePosition

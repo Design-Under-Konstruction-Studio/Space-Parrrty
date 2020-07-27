@@ -22,10 +22,10 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Join",
+                    "name": "Change Board State",
                     "type": "Value",
-                    "id": "8f533ebc-1c92-4e4a-9987-0bcefa51161d",
-                    "expectedControlType": "Button",
+                    "id": "4d8e8377-9b6f-499e-bbd5-46161ffb7606",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
                 }
@@ -99,12 +99,12 @@
                 },
                 {
                     "name": "",
-                    "id": "a979ba82-6837-4dd5-8fc3-43beae7c1d2f",
-                    "path": "<Mouse>/rightButton",
+                    "id": "3385938b-3c1c-4b63-8dfb-52e0bf7f1f75",
+                    "path": "<Keyboard>/z",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Join",
+                    "action": "Change Board State",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
