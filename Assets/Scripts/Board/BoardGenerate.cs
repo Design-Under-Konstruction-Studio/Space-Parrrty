@@ -13,6 +13,7 @@ namespace Board
     [Header("Prefabs Imports")]
     [SerializeField]
     public List<GameObject> _tilesPrefabs;
+    public GameObject _obstaclePrefab;
 
     [Header("Board Settings")]
     public Vector2Int startTileSize;
@@ -25,6 +26,14 @@ namespace Board
     private void Start()
     {
       CreateBoard();
+    }
+
+    private void Update()
+    {
+      if (Input.GetKeyDown(KeyCode.X))
+      {
+        createObstacle();
+      }
     }
 
     public void CreateBoard()
@@ -78,6 +87,13 @@ namespace Board
         tile.GetComponent<Tile>().setPosition(new Vector2Int(x, boardController.bottomOfBoardOffSet));
         boardController.boardTiles[x, boardController.bottomOfBoardOffSet] = tile;
       }
+    }
+
+    public void createObstacle()
+    {
+      GameObject obstacle = Instantiate(_obstaclePrefab, new Vector3(100, 100, 100), Quaternion.identity, boardController.tilesObjects.transform);
+      obstacle.GetComponent<Obstacle>().setPosition(new Vector2Int(0, boardController.topOfBoard));
+      obstacle.GetComponent<Obstacle>().fallTile();
     }
 
     public void createDownLine()

@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using Board;
 using UnityEngine;
 
-namespace TileController {
-  public class Tile : MonoBehaviour {
+namespace TileController
+{
+  public class Tile : MonoBehaviour
+  {
 
-    [SerializeField]
-    private Vector2Int _position;
+    public Vector2Int _position;
 
     public bool canMove = true;
 
@@ -18,43 +19,51 @@ namespace TileController {
     BoardController board;
 
     // Start is called before the first frame update
-    void Start() {
+    void Start()
+    {
       board = transform.parent.parent.parent.gameObject.GetComponent<BoardController>();
     }
 
     // Update is called once per frame
-    void Update() {
+    void Update()
+    {
       setTileName();
 
       transform.localPosition = new Vector3(_position.x, -(_position.y), 0);
     }
 
     #region Set/GetPosition
-    public void setPosition(Vector2Int position) {
+    public virtual void setPosition(Vector2Int position)
+    {
       _position = position;
 
-      if (board != null) {
+      if (board != null)
+      {
         board.boardTiles[position.x, position.y] = gameObject;
       }
     }
 
-    public Vector2Int getPosition() {
+    public Vector2Int getPosition()
+    {
       return _position;
     }
     #endregion
 
     #region SetTileName
-    void setTileName() {
+    public virtual void setTileName()
+    {
       gameObject.name = $"Tile {_position.x}-{Mathf.Abs(_position.y)}";
     }
     #endregion
 
     #region Find Match
-    public void findMatch() {
+    public void findMatch()
+    {
       StartCoroutine(findMatchRoutine());
     }
 
-    IEnumerator findMatchRoutine() {
+    IEnumerator findMatchRoutine()
+    {
       yield return new WaitForSeconds(0.1f);
       fallTile();
       List<Tile> tilesMatch = new List<Tile>();
@@ -62,47 +71,57 @@ namespace TileController {
       tilesMatch.AddRange(findTileDirection(new Vector2Int[2] { Vector2Int.left, Vector2Int.right }));
       tilesMatch.AddRange(findTileDirection(new Vector2Int[2] { Vector2Int.up, Vector2Int.down }));
 
-      foreach (var item in tilesMatch) {
+      foreach (var item in tilesMatch)
+      {
         StartCoroutine(item.destroyTile());
       }
     }
 
-    List<Tile> findTileDirection(Vector2Int[] directions) {
+    List<Tile> findTileDirection(Vector2Int[] directions)
+    {
       List<Tile> tilesMatch = new List<Tile>();
       tilesMatch.Add(this);
-
-      // Um Pequeno LOG
-      // Debug.Log("Tile: " + nextTile.name + " type: " + nextTile.typeTile + " - Match: " + 1 + " " + directions[i].ToString());
-
-      for (int i = 0; i < directions.Length; i++) {
+      
+      for (int i = 0; i < directions.Length; i++)
+      {
         List<Tile> tilesDirectionMatch = new List<Tile>();
         Tile nextTile = this;
-        for (int e = 0; e < tilesMatch.Count; e++) {
+        for (int e = 0; e < tilesMatch.Count; e++)
+        {
           nextTile = board.getTileComponent(nextTile._position + directions[i]);
-          if (nextTile == null || nextTile.typeTile != this.typeTile || nextTile.inMatch) {
+          if (nextTile == null || nextTile.typeTile != this.typeTile || nextTile.inMatch || nextTile.typeTile == TileTypes.Obstacle)
+          {
             break;
           }
           tilesMatch.Add(nextTile);
         }
       }
-      if (tilesMatch.Count > 2) {
+      if (tilesMatch.Count > 2)
+      {
         return tilesMatch;
-      } else {
+      }
+      else
+      {
         return new List<Tile>();
       }
     }
     #endregion
 
     #region FallTile
-    public void fallTile() {
+    public virtual void fallTile()
+    {
       Vector2Int bottomPosition = this._position + Vector2Int.up;
-      if (bottomPosition.y < board.bottomOfBoard) {
+      if (bottomPosition.y < board.bottomOfBoard)
+      {
         Tile bottomTile = board.getTileComponent(this._position + Vector2Int.up);
         Tile upTile = board.getTileComponent(this._position + Vector2Int.down);
-        if (bottomTile == null) {
+        if (bottomTile == null)
+        {
           board.boardTiles[_position.x, _position.y] = null;
           setPosition(bottomPosition);
-          if (upTile != null) {
+          
+          if (upTile != null)
+          {
             upTile.fallTile();
           }
           fallTile();
@@ -112,7 +131,8 @@ namespace TileController {
     #endregion
 
     #region DestroyObject
-    IEnumerator destroyTile() {
+    IEnumerator destroyTile()
+    {
       canMove = false;
       inMatch = true;
       Color tileColor = GetComponent<SpriteRenderer>().color;
@@ -121,7 +141,8 @@ namespace TileController {
       board.boardTiles[_position.x, _position.y] = null;
       Tile upTile = board.getTileComponent(this._position + Vector2Int.down);
 
-      if (upTile != null) {
+      if (upTile != null)
+      {
         upTile.fallTile();
       }
       Destroy(gameObject);

@@ -194,7 +194,9 @@ MonoBehaviour:
   - {fileID: 1515395633349705955, guid: 77bad8fe78a4080419ca9f32ea7ef708, type: 3}
   - {fileID: 1515395633349705955, guid: eb1af6ea225b8634aadc9d77df52e33b, type: 3}
   - {fileID: 1515395633349705955, guid: 1e65a51f3b2b86d42a3172f43bc3fe6c, type: 3}
-  startTileSize: {x: 5, y: 6}
+  _obstaclePrefab: {fileID: 8616844182575842880, guid: 9e317dfc19011164c886c21747e6bfa6,
+    type: 3}
+  startTileSize: {x: 5, y: 5}
 --- !u!114 &108975922
 MonoBehaviour:
   m_ObjectHideFlags: 0

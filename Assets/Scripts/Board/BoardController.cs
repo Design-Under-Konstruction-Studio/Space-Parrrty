@@ -99,7 +99,6 @@ namespace Board {
         default:
           break;
       }
-      Debug.Log(boardStatusTypes.ToString());
     }
 
     private IEnumerator boardCountdownCoroutine() {
