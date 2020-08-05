@@ -16,12 +16,18 @@ namespace TileController
 
     public TileTypes typeTile;
 
-    BoardController board;
+    public BoardController board;
+    public BoardGenerate boardGenerate;
+
+    private void Awake() {
+      board = transform.parent.parent.parent.gameObject.GetComponent<BoardController>();
+      boardGenerate = transform.parent.parent.parent.gameObject.GetComponent<BoardGenerate>();
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-      board = transform.parent.parent.parent.gameObject.GetComponent<BoardController>();
+      
     }
 
     // Update is called once per frame
@@ -91,6 +97,9 @@ namespace TileController
           nextTile = board.getTileComponent(nextTile._position + directions[i]);
           if (nextTile == null || nextTile.typeTile != this.typeTile || nextTile.inMatch || nextTile.typeTile == TileTypes.Obstacle)
           {
+            if (nextTile != null && nextTile.typeTile == TileTypes.Obstacle) {
+              if (tilesMatch.Count > 2) StartCoroutine(nextTile.destroyTile());
+            }
             break;
           }
           tilesMatch.Add(nextTile);
@@ -98,6 +107,12 @@ namespace TileController
       }
       if (tilesMatch.Count > 2)
       {
+        if(directions[0].Equals(Vector2Int.left)){
+          Tile upTile = board.getTileComponent(_position + Vector2Int.down);
+          if(upTile != null && upTile.typeTile == TileTypes.Obstacle) {
+            StartCoroutine(upTile.destroyTile());
+          }
+        }
         return tilesMatch;
       }
       else
@@ -144,6 +159,9 @@ namespace TileController
       if (upTile != null)
       {
         upTile.fallTile();
+      }
+      if(typeTile == TileTypes.Obstacle) {
+        boardGenerate.createLine(_position.y);
       }
       Destroy(gameObject);
     }

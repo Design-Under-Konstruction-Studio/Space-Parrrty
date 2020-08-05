@@ -74,7 +74,7 @@ namespace Board
       boardController.bottomOfBoard = boardController.boardSize.y;
     }
 
-    public void createUpLine()
+    public void createLine(int positionY)
     {
       for (int x = 0; x < boardController.boardSize.x; x++)
       {
@@ -84,8 +84,9 @@ namespace Board
 
         int randomTile = Random.Range(0, possibleTile.Count);
         GameObject tile = Instantiate(possibleTile[randomTile], new Vector3(100, 100, 100), Quaternion.identity, boardController.tilesObjects.transform);
-        tile.GetComponent<Tile>().setPosition(new Vector2Int(x, boardController.bottomOfBoardOffSet));
-        boardController.boardTiles[x, boardController.bottomOfBoardOffSet] = tile;
+        tile.GetComponent<Tile>().setPosition(new Vector2Int(x, positionY));
+        boardController.boardTiles[x, positionY] = tile;
+        tile.GetComponent<Tile>().fallTile();
       }
     }
 

@@ -83,7 +83,7 @@ public class Picker : MonoBehaviour {
   void changeTilePosition() {
     Vector2Int rightPosition = new Vector2Int(_position.x + 1, _position.y);
     Vector2Int leftPosition = new Vector2Int(_position.x, _position.y);
-
+    
     Tile tileRight = board.getTileComponent(rightPosition);
     Tile tileLeft = board.getTileComponent(leftPosition);
     

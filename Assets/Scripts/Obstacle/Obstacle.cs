@@ -13,6 +13,8 @@ public class Obstacle : Tile
   private void Awake()
   {
     boardController = transform.parent.parent.parent.gameObject.GetComponent<BoardController>();
+    board = transform.parent.parent.parent.gameObject.GetComponent<BoardController>();
+    boardGenerate = transform.parent.parent.parent.gameObject.GetComponent<BoardGenerate>();
   }
 
   override public void setPosition(Vector2Int position)
