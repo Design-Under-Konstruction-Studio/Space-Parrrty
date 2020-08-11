@@ -11,9 +11,10 @@ namespace Board
         // Script References
         BoardController boardController;
 
-        [Header("Prefabs Imports")]
-        [SerializeField]
-        public List<GameObject> _tilesPrefabs;
+    [Header("Prefabs Imports")]
+    [SerializeField]
+    public List<GameObject> _tilesPrefabs;
+    public GameObject _obstaclePrefab;
 
         [Header("Board Settings")]
         public Vector2Int startTileSize;
@@ -28,10 +29,18 @@ namespace Board
             CreateBoard();
         }
 
-        public void CreateBoard()
-        {
-            boardController.boardTiles = new GameObject[boardController.boardSize.x, 1000];
-            boardController.bottomOfBoardOffSet = boardController.boardSize.y + 2;
+    private void Update()
+    {
+      if (Input.GetKeyDown(KeyCode.X))
+      {
+        createObstacle();
+      }
+    }
+
+    public void CreateBoard()
+    {
+      boardController.boardTiles = new GameObject[boardController.boardSize.x, 1000];
+      boardController.bottomOfBoardOffSet = boardController.boardSize.y + 2;
 
             boardController.tilesObjects = new GameObject();
             boardController.tilesObjects.name = "tilesObjects";
@@ -65,25 +74,33 @@ namespace Board
             boardController.bottomOfBoard = boardController.boardSize.y;
         }
 
-        public void createUpLine()
-        {
-            for (int x = 0; x < boardController.boardSize.x; x++)
-            {
-                List<GameObject> possibleTile = new List<GameObject>();
+    public void createLine(int positionY)
+    {
+      for (int x = 0; x < boardController.boardSize.x; x++)
+      {
+        List<GameObject> possibleTile = new List<GameObject>();
 
                 possibleTile.AddRange(_tilesPrefabs);
 
-                int randomTile = Random.Range(0, possibleTile.Count);
-                GameObject tile = Instantiate(possibleTile[randomTile], new Vector3(100, 100, 100), Quaternion.identity, boardController.tilesObjects.transform);
-                tile.GetComponent<Tile>().setPosition(new Vector2Int(x, boardController.bottomOfBoardOffSet));
-                boardController.boardTiles[x, boardController.bottomOfBoardOffSet] = tile;
-            }
-        }
+        int randomTile = Random.Range(0, possibleTile.Count);
+        GameObject tile = Instantiate(possibleTile[randomTile], new Vector3(100, 100, 100), Quaternion.identity, boardController.tilesObjects.transform);
+        tile.GetComponent<Tile>().setPosition(new Vector2Int(x, positionY));
+        boardController.boardTiles[x, positionY] = tile;
+        tile.GetComponent<Tile>().fallTile();
+      }
+    }
 
-        public void createDownLine()
-        {
-            List<GameObject> lastLine = boardController.getTileLineGameObject(boardController.bottomOfBoardOffSet - 1);
-            GameObject lastTile = null;
+    public void createObstacle()
+    {
+      GameObject obstacle = Instantiate(_obstaclePrefab, new Vector3(100, 100, 100), Quaternion.identity, boardController.tilesObjects.transform);
+      obstacle.GetComponent<Obstacle>().setPosition(new Vector2Int(0, boardController.topOfBoard));
+      obstacle.GetComponent<Obstacle>().fallTile();
+    }
+
+    public void createDownLine()
+    {
+      List<GameObject> lastLine = boardController.getTileLineGameObject(boardController.bottomOfBoardOffSet - 1);
+      GameObject lastTile = null;
 
             for (int x = 0; x < boardController.boardSize.x; x++)
             {
