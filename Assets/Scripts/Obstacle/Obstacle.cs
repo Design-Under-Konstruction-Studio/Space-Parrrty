@@ -7,6 +7,7 @@ using UnityEngine;
 public class Obstacle : Tile
 {
   BoardController boardController;
+  BoardGenerate boardGenerate;
 
   int obstacleSize = 5;
 

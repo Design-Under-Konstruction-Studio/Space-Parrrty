@@ -9,7 +9,7 @@ namespace TileController
     {
 
         [SerializeField]
-        private Vector2Int _position;
+        public Vector2Int _position;
 
         public bool canMove = true;
 
@@ -34,7 +34,7 @@ namespace TileController
         }
 
         #region Set/GetPosition
-        public void setPosition(Vector2Int position)
+        public virtual void setPosition(Vector2Int position)
         {
             _position = position;
 
@@ -51,7 +51,7 @@ namespace TileController
         #endregion
 
         #region SetTileName
-        void setTileName()
+        public virtual void setTileName()
         {
             gameObject.name = $"Tile {_position.x}-{Mathf.Abs(_position.y)}";
         }
@@ -117,7 +117,7 @@ namespace TileController
         #endregion
 
         #region FallTile
-        public void fallTile()
+        public virtual void fallTile()
         {
             Vector2Int bottomPosition = this._position + Vector2Int.up;
             if (bottomPosition.y < board.bottomOfBoard)
