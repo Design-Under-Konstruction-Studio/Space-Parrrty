@@ -25,13 +25,11 @@ namespace Power.Repository
             if (lightPower.Alignment == PowerAlignment.LightPower)
             {
                 powers[0] = lightPower;
-                powers[0].onPowerGained();
             }
 
             if (darkPower.Alignment == PowerAlignment.DarkPower)
             {
                 powers[1] = darkPower;
-                powers[1].onPowerGained();
             }
         }
     }

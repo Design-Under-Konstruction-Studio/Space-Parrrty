@@ -25,7 +25,15 @@
                     "name": "Change Board State",
                     "type": "Value",
                     "id": "4d8e8377-9b6f-499e-bbd5-46161ffb7606",
-                    "expectedControlType": "",
+                    "expectedControlType": "Digital",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Create Obstacle",
+                    "type": "Value",
+                    "id": "517de8fa-51ec-4464-8d01-e42dc83240f2",
+                    "expectedControlType": "Digital",
                     "processors": "",
                     "interactions": ""
                 }
@@ -105,6 +113,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Change Board State",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a6b18dcc-8442-4602-8e93-455fb9934c9b",
+                    "path": "<Keyboard>/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Create Obstacle",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

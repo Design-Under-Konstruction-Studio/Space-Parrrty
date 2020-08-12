@@ -77,7 +77,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &8616844182575842880
@@ -129,8 +129,6 @@ MonoBehaviour:
   canMove: 0
   inMatch: 0
   typeTile: 5
-  board: {fileID: 0}
-  boardGenerate: {fileID: 0}
 --- !u!212 &6224428930797656318
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -169,12 +167,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 247c10baf5726af48b4463b7816419dc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c22d9f302a74b1944b6a15389b264fd7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 5.12, y: 5.12}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

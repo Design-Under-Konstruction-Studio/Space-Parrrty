@@ -21,8 +21,6 @@ namespace Power
         private PowerAlignment powerAlignment;
 
         #region Abstraction Layer
-        public abstract void onPowerGained();
-        public abstract void onPowerLost();
         public abstract void onPowerReleased();
         public abstract Power clone();
         #endregion

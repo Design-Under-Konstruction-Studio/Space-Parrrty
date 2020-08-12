@@ -299,6 +299,21 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 4d8e8377-9b6f-499e-bbd5-46161ffb7606
     m_ActionName: Control/Change Board State[/Keyboard/z]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8059745349488313586}
+        m_MethodName: onObstacleAsked
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 517de8fa-51ec-4464-8d01-e42dc83240f2
+    m_ActionName: Control/Create Obstacle[/Keyboard/x]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Control
@@ -410,6 +425,8 @@ MonoBehaviour:
   - {fileID: 1515395633349705955, guid: eb1af6ea225b8634aadc9d77df52e33b, type: 3}
   - {fileID: 1515395633349705955, guid: 1e65a51f3b2b86d42a3172f43bc3fe6c, type: 3}
   - {fileID: 1031957327162153119, guid: 21b7fed7f96fa3d4392f0922e69baf76, type: 3}
+  _obstaclePrefab: {fileID: 8616844182575842880, guid: 9e317dfc19011164c886c21747e6bfa6,
+    type: 3}
   startTileSize: {x: 5, y: 6}
 --- !u!114 &8059745349488313585
 MonoBehaviour:
