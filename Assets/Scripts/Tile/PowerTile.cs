@@ -1,6 +1,6 @@
 using UnityEngine;
 
-using Power.Events;
+using PowerModule.Events;
 
 namespace TileController
 {

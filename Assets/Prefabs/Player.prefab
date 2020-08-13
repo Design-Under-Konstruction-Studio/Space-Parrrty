@@ -92,7 +92,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4646516399930111704}
-  - component: {fileID: 4006687251739059809}
+  - component: {fileID: 4939219879808076870}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -116,7 +116,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4006687251739059809
+--- !u!114 &4939219879808076870
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -125,11 +125,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 7120673343873392836}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30ba2e5f09244f942accab84a3668c50, type: 3}
+  m_Script: {fileID: 11500000, guid: be2c2f73b47f4164d8de3d776e459830, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   powerRepository: {fileID: 11400000, guid: 551d569c726436544adf8dca9a4d0fa5, type: 2}
   onPowerObtained: {fileID: 11400000, guid: b21ea1888ca10994da5271f560e380b7, type: 2}
+  onDarkPowerSuffered: {fileID: 11400000, guid: ff5ea0183fa654648a45f7deaa2db378,
+    type: 2}
+  stats:
+    hasShield: 0
   powerInventory:
     powers:
     - {fileID: 0}
@@ -316,6 +320,36 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 517de8fa-51ec-4464-8d01-e42dc83240f2
     m_ActionName: Control/Create Obstacle[/Keyboard/x]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4939219879808076870}
+        m_MethodName: useLightPower
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: a1bdd966-e54b-43ee-adfd-d53be3c3bbe1
+    m_ActionName: Control/Release Light Power[/Keyboard/o]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4939219879808076870}
+        m_MethodName: useDarkPower
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 2842a3c6-cc96-401b-b23c-e3a042dc2b41
+    m_ActionName: Control/Release Dark Power[/Keyboard/p]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Control

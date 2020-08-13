@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66db489cff53ef34eb4536a568437861, type: 3}
   m_Name: Thief
   m_EditorClassIdentifier: 
-  powerAlignment: 0
+  powerAlignment: 1

@@ -2,7 +2,7 @@ using UnityEngine;
 
 using Player;
 
-namespace Power.Domain
+namespace PowerModule.Domain
 {
     [CreateAssetMenu(fileName = "Line Breaker", menuName = "Powers/Line Breaker", order = 1)]
     public class LineBreakerPower : Power

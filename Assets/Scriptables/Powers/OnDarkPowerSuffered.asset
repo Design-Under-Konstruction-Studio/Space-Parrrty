@@ -9,7 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff84551dc8e3a2a43845c8c9942a3f36, type: 3}
-  m_Name: Haste
+  m_Script: {fileID: 11500000, guid: 45ea03dd4aea2be408750e968a0f2593, type: 3}
+  m_Name: OnDarkPowerSuffered
   m_EditorClassIdentifier: 
-  powerAlignment: 1

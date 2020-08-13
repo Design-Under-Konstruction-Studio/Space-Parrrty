@@ -2,7 +2,7 @@ using UnityEngine;
 
 using Player;
 
-namespace Power.Domain
+namespace PowerModule.Domain
 {
     [CreateAssetMenu(fileName = "Saboteur", menuName = "Powers/Saboteur", order = 1)]
     public class SaboteurPower : Power

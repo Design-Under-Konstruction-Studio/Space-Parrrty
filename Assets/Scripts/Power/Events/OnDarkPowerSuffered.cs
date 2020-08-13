@@ -1,18 +1,18 @@
 using UnityEngine;
 
-namespace Power.Events
+namespace PowerModule.Events
 {
     [CreateAssetMenu(fileName = "OnDarkPowerSuffered", menuName = "Powers/Events/On Dark Power Suffered", order = 1)]
     public class OnDarkPowerSuffered : ScriptableObject
     {
-        public delegate void OnDarkPowerSufferedDelegate();
+        public delegate void OnDarkPowerSufferedDelegate(Power power);
         private OnDarkPowerSufferedDelegate onDarkPowerSufferedDelegate;
 
-        public void trigger()
+        public void trigger(Power power)
         {
             if (onDarkPowerSufferedDelegate != null)
             {
-                onDarkPowerSufferedDelegate();
+                onDarkPowerSufferedDelegate(power);
             }
         }
 

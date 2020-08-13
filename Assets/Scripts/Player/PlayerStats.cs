@@ -1,6 +1,6 @@
 using UnityEngine;
 
-using Power.Repository;
+using PowerModule.Repository;
 
 namespace Player
 {

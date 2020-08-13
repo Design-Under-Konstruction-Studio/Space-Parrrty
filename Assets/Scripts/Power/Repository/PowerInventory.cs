@@ -2,9 +2,9 @@ using UnityEngine;
 
 using Player;
 
-using Power.Enum;
+using PowerModule.Enum;
 
-namespace Power.Repository
+namespace PowerModule.Repository
 {
     [System.Serializable]
     public class PowerInventory

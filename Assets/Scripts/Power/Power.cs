@@ -1,9 +1,9 @@
 using UnityEngine;
 
-using Power.Enum;
+using PowerModule.Enum;
 using Player;
 
-namespace Power
+namespace PowerModule
 {
     public abstract class Power : ScriptableObject
     {

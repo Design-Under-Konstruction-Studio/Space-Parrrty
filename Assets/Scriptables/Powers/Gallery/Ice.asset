@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 562ea2874266ea848a7018ac625839af, type: 3}
   m_Name: Ice
   m_EditorClassIdentifier: 
-  powerAlignment: 0
+  powerAlignment: 1

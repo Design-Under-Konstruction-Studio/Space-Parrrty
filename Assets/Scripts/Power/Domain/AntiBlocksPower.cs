@@ -2,7 +2,7 @@ using UnityEngine;
 
 using Player;
 
-namespace Power.Domain
+namespace PowerModule.Domain
 {
     [CreateAssetMenu(fileName = "Anti-Blocks", menuName = "Powers/Anti-Blocks", order = 1)]
     public class AntiBlocksPower : Power

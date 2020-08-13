@@ -1,4 +1,4 @@
-namespace Power.Enum
+namespace PowerModule.Enum
 {
     public enum PowerAlignment
     {

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Power.Events
+namespace PowerModule.Events
 {
     [CreateAssetMenu(fileName = "OnPowerObtained", menuName = "Powers/Events/On Power Obtained", order = 1)]
     public class OnPowerObtained : ScriptableObject

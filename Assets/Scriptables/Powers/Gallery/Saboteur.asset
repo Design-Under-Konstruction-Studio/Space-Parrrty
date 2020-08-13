@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1053817b591b2244aa6239caebcfaea, type: 3}
   m_Name: Saboteur
   m_EditorClassIdentifier: 
-  powerAlignment: 0
+  powerAlignment: 1

@@ -2,7 +2,7 @@ using UnityEngine;
 
 using Player;
 
-namespace Power.Domain
+namespace PowerModule.Domain
 {
     [CreateAssetMenu(fileName = "Haste", menuName = "Powers/Haste", order = 1)]
     public class HastePower : Power

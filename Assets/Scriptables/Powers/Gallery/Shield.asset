@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Shield
   m_EditorClassIdentifier: 
   powerAlignment: 0
+  durationInSeconds: 5

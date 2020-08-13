@@ -1,9 +1,9 @@
 using System.Linq;
 using UnityEngine;
 
-using Power.Enum;
+using PowerModule.Enum;
 
-namespace Power.Repository
+namespace PowerModule.Repository
 {
     [CreateAssetMenu(fileName = "Power Repository", menuName = "Powers/Power repository", order = 1)]
     public class PowerRepository : ScriptableObject
