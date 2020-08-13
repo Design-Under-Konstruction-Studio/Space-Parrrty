@@ -1,6 +1,7 @@
 using UnityEngine;
 
 using Power.Enum;
+using Player;
 
 namespace Power
 {
@@ -21,7 +22,8 @@ namespace Power
         private PowerAlignment powerAlignment;
 
         #region Abstraction Layer
-        public abstract void onPowerReleased();
+        public abstract void onPowerReleased(PlayerObject player);
+
         public abstract Power clone();
         #endregion
     }

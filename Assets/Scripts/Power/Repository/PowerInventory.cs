@@ -1,26 +1,18 @@
-using System.Linq;
 using UnityEngine;
+
+using Player;
 
 using Power.Enum;
 
 namespace Power.Repository
 {
-    public class PowerInventory : MonoBehaviour
+    [System.Serializable]
+    public class PowerInventory
     {
-        [SerializeField]
-        private PowerRepository powerRepository;
-
         [SerializeField]
         private Power[] powers = new Power[2];
 
-        public void addPowersToInventory()
-        {
-            addPowersToInventory(
-                powerRepository.getRandomPowerByAlignment(PowerAlignment.LightPower),
-                powerRepository.getRandomPowerByAlignment(PowerAlignment.DarkPower));
-        }
-
-        private void addPowersToInventory(Power lightPower, Power darkPower)
+        public void addPowersToInventory(Power lightPower, Power darkPower)
         {
             if (lightPower.Alignment == PowerAlignment.LightPower)
             {
@@ -31,6 +23,17 @@ namespace Power.Repository
             {
                 powers[1] = darkPower;
             }
+        }
+
+        public void usePower(PowerAlignment powerAlignment, PlayerObject player)
+        {
+            powers[(int)powerAlignment].onPowerReleased(player);
+        }
+
+        public void clear()
+        {
+            powers[0] = null;
+            powers[1] = null;
         }
     }
 }

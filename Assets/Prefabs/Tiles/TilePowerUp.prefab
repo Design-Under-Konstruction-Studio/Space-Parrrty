@@ -97,4 +97,4 @@ MonoBehaviour:
   canMove: 1
   inMatch: 0
   typeTile: 5
-  powerInventory: {fileID: 0}
+  onPowerObtained: {fileID: 11400000, guid: b21ea1888ca10994da5271f560e380b7, type: 2}

@@ -1,23 +1,17 @@
 using UnityEngine;
 
-using Power.Repository;
+using Power.Events;
 
 namespace TileController
 {
     public class PowerTile : Tile
     {
         [SerializeField]
-        private PowerInventory powerInventory;
-
-        new void Start()
-        {
-            base.Start();
-            powerInventory = board.GetComponentInParent<PowerInventory>();
-        }
+        private OnPowerObtained onPowerObtained;
 
         override protected void onMatchFound()
         {
-            powerInventory.addPowersToInventory();
+            onPowerObtained.trigger();
         }
     }
 }
