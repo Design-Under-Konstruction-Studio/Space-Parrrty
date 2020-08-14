@@ -1,10 +1,14 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+using System.Collections.Generic;
+
 using PowerModule;
 using PowerModule.Repository;
 using PowerModule.Events;
 using PowerModule.Enum;
+
+using Board;
 
 namespace Player
 {
@@ -29,11 +33,16 @@ namespace Player
 
         [SerializeField]
         private PowerInventory powerInventory;
+
+        [SerializeField]
+        private BoardController boardController;
         #endregion
 
         #region Monobehaviour
         private void Awake()
         {
+            boardController = transform.GetComponentInChildren<BoardController>();
+
             onPowerObtained.subscribe(addPowersToInventory);
             onDarkPowerSuffered.subscribe(sufferDarkPower);
         }
@@ -85,6 +94,18 @@ namespace Player
         public void turnOnShield(bool turnOnShield)
         {
             stats.HasShield = turnOnShield;
+        }
+
+        public void destroyTopmostLine()
+        {
+            GameObject[] topMostLine;
+            int lineIndex = -1;
+            do
+            {
+                lineIndex++;
+                topMostLine = boardController.getTileLineGameObjectAsArray(lineIndex);
+            } while (topMostLine.Length == 0);
+            boardController.destroyLine(lineIndex);
         }
         #endregion
     }

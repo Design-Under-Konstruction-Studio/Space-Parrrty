@@ -155,6 +155,11 @@ namespace TileController
             }
             Destroy(gameObject);
         }
+
+        public void destroy()
+        {
+            StartCoroutine(destroyTile());
+        }
         #endregion
 
         protected virtual void onMatchFound()

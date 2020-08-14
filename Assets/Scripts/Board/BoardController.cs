@@ -92,6 +92,13 @@ namespace Board
             }
             return lineTile;
         }
+
+        public GameObject[] getTileLineGameObjectAsArray(int positionY)
+        {
+            List<GameObject> tileLine = getTileLineGameObject(positionY);
+            tileLine.RemoveAll(tile => tile == null);
+            return tileLine.ToArray();
+        }
         #endregion
 
         private void changeBoardType()
@@ -139,14 +146,19 @@ namespace Board
 
         public void checkTileAtTop()
         {
-            List<GameObject> topTileLine = getTileLineGameObject(topOfBoard);
-            foreach (GameObject item in topTileLine)
+            if (getTileLineGameObject(topOfBoard).Count > 0)
             {
-                if (item != null)
-                {
-                    finishBoardStatusType();
-                    break;
-                }
+                finishBoardStatusType();
+            }
+        }
+
+        public void destroyLine(int yIndex)
+        {
+            GameObject[] lineToBeDestroyed = getTileLineGameObjectAsArray(yIndex);
+            foreach (GameObject tileGameObject in lineToBeDestroyed)
+            {
+                Tile tileToBeDestroyed = tileGameObject.GetComponent<Tile>();
+                tileToBeDestroyed.destroy();
             }
         }
     }

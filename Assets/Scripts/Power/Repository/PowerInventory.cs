@@ -27,7 +27,12 @@ namespace PowerModule.Repository
 
         public void usePower(PowerAlignment powerAlignment, PlayerObject player)
         {
-            powers[(int)powerAlignment].onPowerReleased(player);
+            if (powers[(int)powerAlignment] != null)
+            {
+                powers[(int)powerAlignment].onPowerReleased(player);
+                powers[0] = null;
+                powers[1] = null;
+            }
         }
 
         public void clear()

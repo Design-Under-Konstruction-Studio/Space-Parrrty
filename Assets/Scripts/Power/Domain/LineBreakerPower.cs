@@ -9,11 +9,11 @@ namespace PowerModule.Domain
     {
         override public void onPowerReleased(PlayerObject player)
         {
-
+            player.destroyTopmostLine();
         }
         override public Power clone()
         {
-            return this;
+            return new LineBreakerPower();
         }
     }
 }
