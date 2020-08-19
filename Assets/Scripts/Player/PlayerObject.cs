@@ -1,12 +1,8 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-using System.Collections.Generic;
-
-using PowerModule;
 using PowerModule.Repository;
 using PowerModule.Events;
-using PowerModule.Enum;
 
 using Board;
 
@@ -21,9 +17,6 @@ namespace Player
 
         [SerializeField]
         private OnPowerObtained onPowerObtained;
-
-        [SerializeField]
-        private OnDarkPowerSuffered onDarkPowerSuffered;
         #endregion
 
         #region Internal state
@@ -44,13 +37,11 @@ namespace Player
             boardController = transform.GetComponentInChildren<BoardController>();
 
             onPowerObtained.subscribe(addPowersToInventory);
-            onDarkPowerSuffered.subscribe(sufferDarkPower);
         }
 
         private void OnDestroy()
         {
             onPowerObtained.unsubscribe(addPowersToInventory);
-            onDarkPowerSuffered.unsubscribe(sufferDarkPower);
         }
         #endregion
 
@@ -59,7 +50,7 @@ namespace Player
         {
             if (ctx.performed)
             {
-                powerInventory.usePower(PowerAlignment.LightPower, this);
+                powerInventory.useLightPower(this);
             }
         }
 
@@ -67,7 +58,7 @@ namespace Player
         {
             if (ctx.performed)
             {
-                powerInventory.usePower(PowerAlignment.LightPower, this);
+                powerInventory.useDarkPower(this);
             }
         }
         #endregion
@@ -76,16 +67,8 @@ namespace Player
         private void addPowersToInventory()
         {
             powerInventory.addPowersToInventory(
-                powerRepository.getRandomPowerByAlignment(PowerAlignment.LightPower),
-                powerRepository.getRandomPowerByAlignment(PowerAlignment.DarkPower));
-        }
-
-        public void sufferDarkPower(Power power)
-        {
-            if (!stats.HasShield)
-            {
-                //TODO: Suffer dark power
-            }
+                powerRepository.getRandomLightPower(),
+                powerRepository.getRandomDarkPower());
         }
         #endregion
 
@@ -107,6 +90,14 @@ namespace Player
             } while (topMostLine.Length == 0);
             boardController.destroyLine(lineIndex);
         }
+        #endregion
+
+        #region Static methods
+        public static PlayerObject from(PlayerInput playerInput)
+        {
+            return playerInput.GetComponentInParent<PlayerObject>();
+        }
+
         #endregion
     }
 }

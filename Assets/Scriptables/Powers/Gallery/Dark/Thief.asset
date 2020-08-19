@@ -9,7 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42629445654c3d3499bde50789e2996a, type: 3}
-  m_Name: Anti-Blocks
+  m_Script: {fileID: 11500000, guid: 66db489cff53ef34eb4536a568437861, type: 3}
+  m_Name: Thief
   m_EditorClassIdentifier: 
-  powerAlignment: 0
+  readyForTesting: 0
+  onDarkPowerReleased: {fileID: 0}

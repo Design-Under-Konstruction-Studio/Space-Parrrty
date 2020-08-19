@@ -2,7 +2,7 @@ using UnityEngine;
 
 using Player;
 
-using PowerModule.Enum;
+using PowerModule.Base;
 
 namespace PowerModule.Repository
 {
@@ -10,35 +10,39 @@ namespace PowerModule.Repository
     public class PowerInventory
     {
         [SerializeField]
-        private Power[] powers = new Power[2];
+        private DarkPower darkPower;
 
-        public void addPowersToInventory(Power lightPower, Power darkPower)
+        [SerializeField]
+        private LightPower lightPower;
+
+        public void addPowersToInventory(LightPower lightPower, DarkPower darkPower)
         {
-            if (lightPower.Alignment == PowerAlignment.LightPower)
-            {
-                powers[0] = lightPower;
-            }
-
-            if (darkPower.Alignment == PowerAlignment.DarkPower)
-            {
-                powers[1] = darkPower;
-            }
+            this.lightPower = lightPower;
+            this.darkPower = darkPower;
         }
 
-        public void usePower(PowerAlignment powerAlignment, PlayerObject player)
+        public void useLightPower(PlayerObject player)
         {
-            if (powers[(int)powerAlignment] != null)
+            if (lightPower != null)
             {
-                powers[(int)powerAlignment].onPowerReleased(player);
-                powers[0] = null;
-                powers[1] = null;
+                lightPower.onPowerReleased(player);
             }
+            clear();
+        }
+
+        public void useDarkPower(PlayerObject player)
+        {
+            if (darkPower != null)
+            {
+                darkPower.onPowerReleased(player);
+            }
+            clear();
         }
 
         public void clear()
         {
-            powers[0] = null;
-            powers[1] = null;
+            lightPower = null;
+            darkPower = null;
         }
     }
 }

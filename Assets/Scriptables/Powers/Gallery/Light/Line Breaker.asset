@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 562ea2874266ea848a7018ac625839af, type: 3}
-  m_Name: Ice
+  m_Script: {fileID: 11500000, guid: dd58c9a5caee0c54fbd083177e0a6523, type: 3}
+  m_Name: Line Breaker
   m_EditorClassIdentifier: 
-  powerAlignment: 1
+  readyForTesting: 0

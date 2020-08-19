@@ -3,10 +3,12 @@ using System.Collections;
 
 using Player;
 
+using PowerModule.Base;
+
 namespace PowerModule.Domain
 {
     [CreateAssetMenu(fileName = "Shield", menuName = "Powers/Shield", order = 1)]
-    public class ShieldPower : Power
+    public class ShieldPower : LightPower
     {
 
         [SerializeField]

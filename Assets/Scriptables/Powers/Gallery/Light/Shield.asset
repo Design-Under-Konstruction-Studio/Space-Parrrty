@@ -9,7 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd58c9a5caee0c54fbd083177e0a6523, type: 3}
-  m_Name: Line Breaker
+  m_Script: {fileID: 11500000, guid: 0ea140355f0253b48ba54ca57d522177, type: 3}
+  m_Name: Shield
   m_EditorClassIdentifier: 
-  powerAlignment: 0
+  readyForTesting: 0
+  durationInSeconds: 5

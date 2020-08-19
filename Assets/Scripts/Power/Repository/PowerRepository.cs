@@ -1,7 +1,7 @@
 using System.Linq;
 using UnityEngine;
 
-using PowerModule.Enum;
+using PowerModule.Base;
 
 namespace PowerModule.Repository
 {
@@ -9,12 +9,52 @@ namespace PowerModule.Repository
     public class PowerRepository : ScriptableObject
     {
         [SerializeField]
-        private Power[] powerPrefabs;
+        private LightPower[] lightPowerPrefabs;
 
-        public Power getRandomPowerByAlignment(PowerAlignment alignment)
+        [SerializeField]
+        private DarkPower[] darkPowerPrefabs;
+
+        public LightPower getRandomLightPower()
         {
-            Power[] alignedPowers = powerPrefabs.Where(power => power.Alignment == alignment).ToArray();
-            return alignedPowers[Random.Range(0, alignedPowers.Length)].clone();
+            return (LightPower)lightPowerPrefabs[Random.Range(0, lightPowerPrefabs.Length)].clone();
+        }
+
+        public DarkPower getRandomDarkPower()
+        {
+            return (DarkPower)darkPowerPrefabs[Random.Range(0, darkPowerPrefabs.Length)].clone();
+        }
+
+        public Power checkForTestablePower()
+        {
+            Power returnPower = null;
+
+            foreach (LightPower power in lightPowerPrefabs)
+            {
+                if (power.readyForTesting)
+                {
+                    if (returnPower == null)
+                    {
+                        returnPower = power;
+                    }
+
+                    power.readyForTesting = false;
+                }
+            }
+
+            foreach (DarkPower power in darkPowerPrefabs)
+            {
+                if (power.readyForTesting)
+                {
+                    if (returnPower == null)
+                    {
+                        returnPower = power;
+                    }
+
+                    power.readyForTesting = false;
+                }
+            }
+
+            return returnPower;
         }
     }
 }

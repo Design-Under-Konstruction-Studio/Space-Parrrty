@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff84551dc8e3a2a43845c8c9942a3f36, type: 3}
   m_Name: Haste
   m_EditorClassIdentifier: 
-  powerAlignment: 1
+  readyForTesting: 0
+  onDarkPowerReleased: {fileID: 0}

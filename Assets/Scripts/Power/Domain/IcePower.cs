@@ -2,10 +2,12 @@ using UnityEngine;
 
 using Player;
 
+using PowerModule.Base;
+
 namespace PowerModule.Domain
 {
     [CreateAssetMenu(fileName = "Ice", menuName = "Powers/Ice", order = 1)]
-    public class IcePower : Power
+    public class IcePower : DarkPower
     {
         override public void onPowerReleased(PlayerObject player)
         {
@@ -14,6 +16,11 @@ namespace PowerModule.Domain
         override public Power clone()
         {
             return this;
+        }
+
+        override public void releasePower(PlayerObject player)
+        {
+
         }
     }
 }
