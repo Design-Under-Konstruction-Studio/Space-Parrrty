@@ -37,6 +37,7 @@ public class Picker : MonoBehaviour
 
     public void move(InputAction.CallbackContext ctx)
     {
+        Debug.Log("FUNCIONA CARAI");
         if (ctx.performed)
         {
             Vector2Int movementDirection = new Vector2Int((int)ctx.ReadValue<Vector2>().x, -(int)ctx.ReadValue<Vector2>().y);

@@ -7,7 +7,7 @@
             "actions": [
                 {
                     "name": "Move",
-                    "type": "Value",
+                    "type": "PassThrough",
                     "id": "34645844-3dca-4ca4-b731-02e801fd2e5a",
                     "expectedControlType": "Vector2",
                     "processors": "",
@@ -15,17 +15,17 @@
                 },
                 {
                     "name": "Change Tile",
-                    "type": "Value",
+                    "type": "Button",
                     "id": "7e8bc24d-c568-4f72-8801-f88d563c1d3b",
-                    "expectedControlType": "Digital",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
                 },
                 {
                     "name": "Change Board State",
-                    "type": "Value",
+                    "type": "Button",
                     "id": "4d8e8377-9b6f-499e-bbd5-46161ffb7606",
-                    "expectedControlType": "Digital",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
                 },
@@ -96,6 +96,17 @@
                 },
                 {
                     "name": "",
+                    "id": "272ae428-3c9f-434b-9f23-969325e061d3",
+                    "path": "<Gamepad>/dpad",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "9e3e9d0a-955a-4f82-83cc-76476d2ea878",
                     "path": "<Keyboard>/space",
                     "interactions": "",
@@ -107,8 +118,30 @@
                 },
                 {
                     "name": "",
+                    "id": "7d658647-8449-4adc-a8e9-9d0e9c6d4044",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Change Tile",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "3385938b-3c1c-4b63-8dfb-52e0bf7f1f75",
                     "path": "<Keyboard>/z",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Change Board State",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e40f9c35-c744-4108-bc94-ae83eadac19b",
+                    "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
