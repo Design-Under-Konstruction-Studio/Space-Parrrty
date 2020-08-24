@@ -1,19 +1,15 @@
 using UnityEngine;
 
-using Player;
+using System.Collections;
 
-namespace PowerModule.Base
+using Player.Power;
+
+namespace Power.Base
 {
-    public abstract class Power : ScriptableObject
+    public abstract class BasePower : ScriptableObject
     {
-        #region Testing only - remove before merge!
-        public bool readyForTesting;
-        #endregion
+        public abstract BasePower clone(int level);
 
-        #region Abstraction Layer
-        public abstract void onPowerReleased(PlayerObject player);
-
-        public abstract Power clone();
-        #endregion
+        public abstract IEnumerator execute(PowerExecutor executor);
     }
 }

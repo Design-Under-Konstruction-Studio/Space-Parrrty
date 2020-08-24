@@ -1,10 +1,7 @@
-using UnityEngine;
-
-using Player;
-
-namespace PowerModule.Base
+namespace Power.Base
 {
-    public abstract class LightPower : Power
+    public abstract class LightPower : BasePower
     {
+
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Collections;
-using TileController;
+using TileController.Base;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -37,14 +37,6 @@ namespace Board
         private void Awake()
         {
             boardGenerate = GetComponent<BoardGenerate>();
-        }
-
-        public void onPlayerReady(InputAction.CallbackContext ctx)
-        {
-            if (ctx.performed)
-            {
-                changeBoardType();
-            }
         }
 
         #region Getter Tiles
@@ -101,7 +93,7 @@ namespace Board
         }
         #endregion
 
-        private void changeBoardType()
+        public void changeBoardType()
         {
             switch (boardStatusTypes)
             {

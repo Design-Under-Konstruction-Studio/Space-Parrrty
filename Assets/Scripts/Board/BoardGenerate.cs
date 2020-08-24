@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using TileController;
+using TileController.Base;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -22,14 +22,6 @@ namespace Board
         private void Awake()
         {
             boardController = GetComponent<BoardController>();
-        }
-
-        public void onObstacleAsked(InputAction.CallbackContext ctx)
-        {
-            if (ctx.performed)
-            {
-                createObstacle();
-            }
         }
 
         private void Start()

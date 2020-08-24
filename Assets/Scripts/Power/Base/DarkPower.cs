@@ -1,20 +1,7 @@
-using UnityEngine;
-
-using PowerModule.Events;
-using Player;
-
-namespace PowerModule.Base
+namespace Power.Base
 {
-    public abstract class DarkPower : Power
+    public abstract class DarkPower : BasePower
     {
-        [SerializeField]
-        protected OnDarkPowerReleased onDarkPowerReleased;
 
-        override public void onPowerReleased(PlayerObject player)
-        {
-            onDarkPowerReleased.trigger(player, this);
-        }
-
-        public abstract void releasePower(PlayerObject player);
     }
 }
