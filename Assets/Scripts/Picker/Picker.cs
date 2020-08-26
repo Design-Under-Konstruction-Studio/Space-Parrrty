@@ -57,44 +57,46 @@ public class Picker : MonoBehaviour
     #region ChangeTilePosition
     public void changeTilePosition(InputAction.CallbackContext ctx)
     {
-        Vector2Int rightPosition = new Vector2Int(_position.x + 1, _position.y);
-        Vector2Int leftPosition = new Vector2Int(_position.x, _position.y);
+        if(ctx.performed) {
+            Vector2Int rightPosition = new Vector2Int(_position.x + 1, _position.y);
+            Vector2Int leftPosition = new Vector2Int(_position.x, _position.y);
 
-        Tile tileRight = board.getTileComponent(rightPosition);
-        Tile tileLeft = board.getTileComponent(leftPosition);
+            Tile tileRight = board.getTileComponent(rightPosition);
+            Tile tileLeft = board.getTileComponent(leftPosition);
 
-        if ((tileLeft != null && tileLeft.canMove) && (tileRight != null && tileRight.canMove))
-        {
-            tileLeft.setPosition(rightPosition);
-            tileRight.setPosition(leftPosition);
+            if ((tileLeft != null && tileLeft.canMove) && (tileRight != null && tileRight.canMove))
+            {
+                tileLeft.setPosition(rightPosition);
+                tileRight.setPosition(leftPosition);
 
-            tileRight.findMatch();
-            tileLeft.findMatch();
-        }
-        else if (tileLeft == null && (tileRight != null && tileRight.canMove))
-        {
-            board.boardTiles[_position.x + 1, _position.y] = null;
-            tileRight.setPosition(leftPosition);
-            tileRight.findMatch();
-        }
-        else if ((tileLeft != null && tileLeft.canMove) && tileRight == null)
-        {
-            board.boardTiles[_position.x, _position.y] = null;
-            tileLeft.setPosition(rightPosition);
-            tileLeft.findMatch();
-        }
+                tileRight.findMatch();
+                tileLeft.findMatch();
+            }
+            else if (tileLeft == null && (tileRight != null && tileRight.canMove))
+            {
+                board.boardTiles[_position.x + 1, _position.y] = null;
+                tileRight.setPosition(leftPosition);
+                tileRight.findMatch();
+            }
+            else if ((tileLeft != null && tileLeft.canMove) && tileRight == null)
+            {
+                board.boardTiles[_position.x, _position.y] = null;
+                tileLeft.setPosition(rightPosition);
+                tileLeft.findMatch();
+            }
 
-        Tile tileRightUp = board.getTileComponent(rightPosition + Vector2Int.down);
-        Tile tileLeftUp = board.getTileComponent(leftPosition + Vector2Int.down);
-        if (tileRightUp != null)
-        {
-            tileRightUp.fallTile();
-            tileRightUp.findMatch();
-        }
-        if (tileLeftUp != null)
-        {
-            tileLeftUp.fallTile();
-            tileLeftUp.findMatch();
+            Tile tileRightUp = board.getTileComponent(rightPosition + Vector2Int.down);
+            Tile tileLeftUp = board.getTileComponent(leftPosition + Vector2Int.down);
+            if (tileRightUp != null)
+            {
+                tileRightUp.fallTile();
+                tileRightUp.findMatch();
+            }
+            if (tileLeftUp != null)
+            {
+                tileLeftUp.fallTile();
+                tileLeftUp.findMatch();
+            }
         }
     }
     #endregion
