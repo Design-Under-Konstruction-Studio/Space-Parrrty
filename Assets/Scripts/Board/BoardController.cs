@@ -153,5 +153,15 @@ namespace Board
                 tileToBeDestroyed.destroy();
             }
         }
+
+        public void accelerate(float speedMultiplier)
+        {
+            moveUpSpeed *= speedMultiplier;
+        }
+
+        public void retard(float speedDivider)
+        {
+            moveUpSpeed /= speedDivider;
+        }
     }
 }

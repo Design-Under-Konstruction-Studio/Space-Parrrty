@@ -249,7 +249,7 @@ MonoBehaviour:
     lightPowerRepository:
     - {fileID: 11400000, guid: 92bc9040aacd34b46b108704395503ab, type: 2}
     darkPowerRepository:
-    - {fileID: 11400000, guid: dddd0c38a0877ec48b826cd967a07796, type: 2}
+    - {fileID: 11400000, guid: 8b70b3ba0f4eb8445b89564f560c21f0, type: 2}
     onPowerAcquired: {fileID: 11400000, guid: b0a3e46488d94b44385a057cf7dedaa1, type: 2}
     lightPower: {fileID: 0}
     darkPower: {fileID: 0}
@@ -440,7 +440,7 @@ MonoBehaviour:
   lowerTilePosition: {x: 0, y: 0, z: 0}
   bottomOfBoardOffSet: 0
   boardTransform: {fileID: 8059745348551603301}
-  moveUpSpeed: 0.02
+  moveUpSpeed: 0.1
 --- !u!114 &8059745349488313586
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -462,7 +462,7 @@ MonoBehaviour:
   - {fileID: 1031957327162153119, guid: 21b7fed7f96fa3d4392f0922e69baf76, type: 3}
   _obstaclePrefab: {fileID: 8616844182575842880, guid: 9e317dfc19011164c886c21747e6bfa6,
     type: 3}
-  startTileSize: {x: 5, y: 6}
+  startTileSize: {x: 5, y: 2}
 --- !u!114 &8059745349488313585
 MonoBehaviour:
   m_ObjectHideFlags: 0

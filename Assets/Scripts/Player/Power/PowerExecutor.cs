@@ -91,7 +91,7 @@ namespace Player.Power
             isFrozen = isFreezeOn;
         }
 
-        public void destroyTopmostLines(int breakableLines)
+        public int getTopmostLineIndex()
         {
             GameObject[] topMostLine;
             int lineIndex = -1;
@@ -101,11 +101,28 @@ namespace Player.Power
                 topMostLine = boardController.getTileLineGameObjectAsArray(lineIndex);
             } while (topMostLine.Length == 0);
 
-            for (int lineCount = 0; lineCount < breakableLines; lineCount++)
-            {
-                boardController.destroyLine(lineIndex);
-                lineIndex++;
-            }
+            return lineIndex;
+        }
+
+        public void destroyLine(int breakableLineIndex)
+        {
+            boardController.destroyLine(breakableLineIndex);
+        }
+
+        public int accelerateBoard(float speedMultiplier)
+        {
+            boardController.accelerate(speedMultiplier);
+            return boardController.bottomOfBoard;
+        }
+
+        public void retardBoard(float speedDivider)
+        {
+            boardController.retard(speedDivider);
+        }
+
+        public bool boardReachedHasteLimit(int originalBottomOfBoard, int hasteNewLineLimit)
+        {
+            return boardController.bottomOfBoard >= originalBottomOfBoard + hasteNewLineLimit;
         }
         #endregion
     }

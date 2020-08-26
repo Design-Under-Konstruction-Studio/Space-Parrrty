@@ -19,6 +19,9 @@ namespace Power.Domain
         [SerializeField]
         private int[] breakableLinesPerLevel = { 1, 2, 3 };
 
+        [SerializeField]
+        private float delayBetweenBreakingLines = 1.0f;
+
         private LineBreaker(int level)
         {
             breakableLines = breakableLinesPerLevel[level];
@@ -31,8 +34,12 @@ namespace Power.Domain
 
         override public IEnumerator execute(PowerExecutor executor)
         {
-            executor.destroyTopmostLines(breakableLines);
-            yield return new WaitForSeconds(0);
+            int topmostLineIndex = executor.getTopmostLineIndex();
+            for (int breakableLinesCount = 0; breakableLinesCount < breakableLines; breakableLinesCount++)
+            {
+                executor.destroyLine(topmostLineIndex + breakableLinesCount);
+                yield return new WaitForSeconds(delayBetweenBreakingLines);
+            }
         }
     }
 }
