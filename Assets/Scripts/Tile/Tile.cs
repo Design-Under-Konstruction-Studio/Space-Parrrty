@@ -152,7 +152,7 @@ namespace TileController
         #endregion
 
         #region DestroyObject
-        IEnumerator destroyTile()
+        public IEnumerator destroyTile()
         {
             canMove = false;
             inMatch = true;

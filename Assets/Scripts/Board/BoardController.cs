@@ -149,5 +149,13 @@ namespace Board
                 }
             }
         }
+        public void checkMatchLine(int positionY) {
+            List<GameObject> lineTiles = getTileLineGameObject(positionY);
+            foreach(GameObject tile in lineTiles) {
+                if(tile != null) {
+                    tile.GetComponent<Tile>().findMatch();
+                }
+            }
+        }
     }
 }
