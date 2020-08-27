@@ -58,6 +58,8 @@ public class Picker : MonoBehaviour
     public void changeTilePosition(InputAction.CallbackContext ctx)
     {
         if(ctx.performed) {
+            if(board.boardStatusTypes != BoardStatusTypes.start) return;
+
             Vector2Int rightPosition = new Vector2Int(_position.x + 1, _position.y);
             Vector2Int leftPosition = new Vector2Int(_position.x, _position.y);
 
