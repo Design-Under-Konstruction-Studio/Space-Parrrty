@@ -5,5 +5,6 @@
     Green = 2,
     Red = 3,
     Yellow = 4,
-    PowerUp = 5
+    PowerUp = 5,
+    Obstacle = 6,
 }

@@ -128,7 +128,8 @@ MonoBehaviour:
   _position: {x: 0, y: 0}
   canMove: 0
   inMatch: 0
-  typeTile: 5
+  typeTile: 6
+  boardGenerate: {fileID: 0}
 --- !u!212 &6224428930797656318
 SpriteRenderer:
   m_ObjectHideFlags: 0

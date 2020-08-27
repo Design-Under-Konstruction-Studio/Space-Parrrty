@@ -18,11 +18,19 @@ namespace TileController
         public TileTypes typeTile;
 
         protected BoardController board;
+        public BoardGenerate boardGenerate;
+        
+        void Awake()
+        {
+            board = transform.parent.parent.parent.gameObject.GetComponent<BoardController>();
+            boardGenerate = transform.parent.parent.parent.gameObject.GetComponent<BoardGenerate>();
+        }
 
         // Start is called before the first frame update
         protected void Start()
         {
             board = transform.parent.parent.parent.gameObject.GetComponent<BoardController>();
+            boardGenerate = transform.parent.parent.parent.gameObject.GetComponent<BoardGenerate>();
         }
 
         // Update is called once per frame
@@ -87,10 +95,6 @@ namespace TileController
         {
             List<Tile> tilesMatch = new List<Tile>();
             tilesMatch.Add(this);
-
-            // Um Pequeno LOG
-            // Debug.Log("Tile: " + nextTile.name + " type: " + nextTile.typeTile + " - Match: " + 1 + " " + directions[i].ToString());
-
             for (int i = 0; i < directions.Length; i++)
             {
                 List<Tile> tilesDirectionMatch = new List<Tile>();
@@ -98,8 +102,11 @@ namespace TileController
                 for (int e = 0; e < tilesMatch.Count; e++)
                 {
                     nextTile = board.getTileComponent(nextTile._position + directions[i]);
-                    if (nextTile == null || nextTile.typeTile != this.typeTile || nextTile.inMatch)
+                    if (nextTile == null || nextTile.typeTile != this.typeTile || nextTile.inMatch || nextTile.typeTile == TileTypes.Obstacle)
                     {
+                        if (nextTile != null && nextTile.typeTile == TileTypes.Obstacle) {
+                            if (tilesMatch.Count > 2) StartCoroutine(nextTile.destroyTile());
+                        }
                         break;
                     }
                     tilesMatch.Add(nextTile);
@@ -107,6 +114,12 @@ namespace TileController
             }
             if (tilesMatch.Count > 2)
             {
+                if(directions[0].Equals(Vector2Int.left)){
+                    Tile upTile = board.getTileComponent(_position + Vector2Int.down);
+                    if(upTile != null && upTile.typeTile == TileTypes.Obstacle) {
+                        StartCoroutine(upTile.destroyTile());
+                    }
+                }
                 return tilesMatch;
             }
             else
@@ -152,6 +165,9 @@ namespace TileController
             if (upTile != null)
             {
                 upTile.fallTile();
+            }
+            if(typeTile == TileTypes.Obstacle) {
+                boardGenerate.createLine(_position.y);
             }
             Destroy(gameObject);
         }
