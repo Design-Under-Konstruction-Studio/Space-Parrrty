@@ -138,9 +138,14 @@ namespace Board
 
         public void checkTileAtTop()
         {
-            if (getTileLineGameObject(topOfBoard).Count > 0)
+            List<GameObject> topTileLine = getTileLineGameObject(topOfBoard);
+            foreach (GameObject item in topTileLine)
             {
-                finishBoardStatusType();
+                if (item != null)
+                {
+                    finishBoardStatusType();
+                    break;
+                }
             }
         }
 
@@ -163,11 +168,14 @@ namespace Board
         {
             moveUpSpeed /= speedDivider;
         }
-        
-        public void checkMatchLine(int positionY) {
+
+        public void checkMatchLine(int positionY)
+        {
             List<GameObject> lineTiles = getTileLineGameObject(positionY);
-            foreach(GameObject tile in lineTiles) {
-                if(tile != null) {
+            foreach (GameObject tile in lineTiles)
+            {
+                if (tile != null)
+                {
                     tile.GetComponent<Tile>().findMatch();
                 }
             }
