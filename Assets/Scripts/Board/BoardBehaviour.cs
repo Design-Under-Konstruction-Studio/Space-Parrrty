@@ -39,6 +39,7 @@ namespace Board
         if (bottomLowerTile.transform.position.y >= boardController.lowerTilePosition.y)
         {
           boardController.lowerTilePosition = Vector3.zero;
+          boardController.checkMatchLine(boardController.bottomOfBoard);
           boardGenerate.createDownLine();
           boardController.checkTileAtTop();
         }
