@@ -112,7 +112,7 @@ namespace Player.Power
         public int accelerateBoard(float speedMultiplier)
         {
             boardController.accelerate(speedMultiplier);
-            return boardController.bottomOfBoard;
+            return boardController.CreatedLines;
         }
 
         public void retardBoard(float speedDivider)
@@ -120,9 +120,9 @@ namespace Player.Power
             boardController.retard(speedDivider);
         }
 
-        public bool boardReachedHasteLimit(int originalBottomOfBoard, int hasteNewLineLimit)
+        public bool boardReachedHasteLimit(int originalNumberOfLines, int hasteNewLineLimit)
         {
-            return boardController.bottomOfBoard >= originalBottomOfBoard + hasteNewLineLimit;
+            return boardController.CreatedLines >= originalNumberOfLines + hasteNewLineLimit;
         }
         #endregion
     }

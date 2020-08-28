@@ -8,6 +8,14 @@ namespace Board
 {
     public class BoardGenerate : MonoBehaviour
     {
+        #region Properties
+        public int CreatedLines
+        {
+            get => createdLines;
+            private set => createdLines = value;
+        }
+        #endregion
+
         // Script References
         BoardController boardController;
 
@@ -19,6 +27,9 @@ namespace Board
         [Header("Board Settings")]
         public Vector2Int startTileSize;
 
+        [Header("Internal State")]
+        public int createdLines;
+
         private void Awake()
         {
             boardController = GetComponent<BoardController>();
@@ -27,6 +38,7 @@ namespace Board
         private void Start()
         {
             CreateBoard();
+            CreatedLines = 0;
         }
 
         public void CreateBoard()
@@ -114,6 +126,7 @@ namespace Board
             boardController.bottomOfBoardOffSet++;
             boardController.bottomOfBoard++;
             boardController.topOfBoard++;
+            CreatedLines++;
         }
 
     }

@@ -39,11 +39,11 @@ namespace Power.Domain
 
         override public IEnumerator execute(PowerExecutor executor)
         {
-            int originalBottomOfBoard = executor.accelerateBoard(speedMultiplier);
+            int originalNumberOfLines = executor.accelerateBoard(speedMultiplier);
             do
             {
                 yield return new WaitForSeconds(stopAccelerationCheckDelay);
-            } while (executor.boardReachedHasteLimit(originalBottomOfBoard, newLineLimit));
+            } while (!executor.boardReachedHasteLimit(originalNumberOfLines, newLineLimit));
             executor.retardBoard(speedMultiplier);
         }
     }

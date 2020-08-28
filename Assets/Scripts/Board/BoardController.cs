@@ -2,12 +2,20 @@
 using System.Collections;
 using TileController.Base;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace Board
 {
     public class BoardController : MonoBehaviour
     {
+        #region Properties
+        public int CreatedLines
+        {
+            get => boardGenerate.CreatedLines;
+            private set => CreatedLines = value;
+        }
+
+        #endregion
+
         // Scripts References
         BoardGenerate boardGenerate;
 
