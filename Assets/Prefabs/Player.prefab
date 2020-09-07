@@ -256,6 +256,12 @@ MonoBehaviour:
   powerExecutor:
     player: {fileID: 0}
     boardController: {fileID: 0}
+    powerInventory:
+      lightPowerRepository: []
+      darkPowerRepository: []
+      onPowerAcquired: {fileID: 0}
+      lightPower: {fileID: 0}
+      darkPower: {fileID: 0}
     hub: {fileID: 0}
     isShielded: 0
     isFrozen: 0

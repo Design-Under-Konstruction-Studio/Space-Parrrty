@@ -51,7 +51,7 @@ namespace Player.Base
             player.boardGenerator = player.transform.GetComponentInChildren<BoardGenerate>();
             player.picker = player.transform.GetComponentInChildren<Picker>();
             player.powerInventory.setup();
-            player.powerExecutor = new PowerExecutor(player, playerHub, player.boardController);
+            player.powerExecutor = new PowerExecutor(player, playerHub, player.boardController, player.powerInventory);
 
             return player;
         }
@@ -97,14 +97,21 @@ namespace Player.Base
 
         public void useLightPower(InputAction.CallbackContext ctx)
         {
-            powerExecutor.usePowerOnSelf(powerInventory.LightPower);
-            powerInventory.clean();
+            if (ctx.performed)
+            {
+                powerExecutor.usePowerOnSelf(powerInventory.LightPower);
+                powerInventory.clean(powerInventory.LightPower.RegenPowersLevel);
+            }
         }
 
         public void useDarkPower(InputAction.CallbackContext ctx)
         {
-            powerExecutor.usePowerOnSelf(powerInventory.DarkPower);
-            powerInventory.clean();
+            if (ctx.performed)
+            {
+                int regenPowersLevel = powerInventory.DarkPower.RegenPowersLevel;
+                powerExecutor.usePowerOnSelf(powerInventory.DarkPower);
+                powerInventory.clean(regenPowersLevel);
+            }
         }
         #endregion
     }

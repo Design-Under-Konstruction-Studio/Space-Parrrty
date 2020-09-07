@@ -35,6 +35,9 @@ namespace Player.Power
         private BoardController boardController;
 
         [SerializeField]
+        private PowerInventory powerInventory;
+
+        [SerializeField]
         private PlayerHub hub;
         #endregion
 
@@ -47,11 +50,12 @@ namespace Player.Power
         private bool isFrozen = false;
         #endregion
 
-        public PowerExecutor(PlayerObject player, PlayerHub hub, BoardController boardController)
+        public PowerExecutor(PlayerObject player, PlayerHub hub, BoardController boardController, PowerInventory powerInventory)
         {
             this.player = player;
             this.hub = hub;
             this.boardController = boardController;
+            this.powerInventory = powerInventory;
         }
 
         #region Power Usage
@@ -123,6 +127,11 @@ namespace Player.Power
         public bool boardReachedHasteLimit(int originalNumberOfLines, int hasteNewLineLimit)
         {
             return boardController.CreatedLines >= originalNumberOfLines + hasteNewLineLimit;
+        }
+
+        public void losePowers(bool shouldLoseLightPower, bool shouldLoseDarkPower)
+        {
+            powerInventory.clean(shouldLoseLightPower, shouldLoseDarkPower);
         }
         #endregion
     }

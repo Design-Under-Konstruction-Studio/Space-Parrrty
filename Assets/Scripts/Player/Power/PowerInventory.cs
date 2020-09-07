@@ -66,6 +66,28 @@ namespace Player.Power
             darkPower = (DarkPower)darkPowerRepository[Random.Range(0, darkPowerRepository.Length - 1)].clone(level);
         }
 
+        public void clean(int regenPowersLevel)
+        {
+            clean();
+            if (regenPowersLevel > 0)
+            {
+                generatePowers(regenPowersLevel);
+            }
+        }
+
+        public void clean(bool shouldCleanLightPower, bool shouldCleanDarkPower)
+        {
+            if (shouldCleanLightPower)
+            {
+                lightPower = null;
+            }
+
+            if (shouldCleanDarkPower)
+            {
+                darkPower = null;
+            }
+        }
+
         public void clean()
         {
             lightPower = null;
