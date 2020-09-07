@@ -11,6 +11,7 @@ namespace Power.Domain
     [CreateAssetMenu(fileName = "Thief", menuName = "Powers/Dark/Thief", order = 1)]
     public class Thief : DarkPower
     {
+        [Header("Internal state - do not assign")]
         [SerializeField]
         private bool removeDarkPowersFromOthers = false;
 
@@ -20,6 +21,7 @@ namespace Power.Domain
         [SerializeField]
         private bool regeneratePowersAfterExecution = false;
 
+        [Header("Scaling values - tweak for balancing")]
         [SerializeField]
         private bool[] removeDarkPowersFromOthersPerLevel;
 

@@ -13,9 +13,11 @@ namespace Power.Domain
     [CreateAssetMenu(fileName = "LineBreaker", menuName = "Powers/Light/LineBreaker", order = 1)]
     public class LineBreaker : LightPower
     {
+        [Header("Internal state - do not assign")]
         [SerializeField]
         private int breakableLines;
 
+        [Header("Scaling values - tweak for balancing")]
         [SerializeField]
         private int[] breakableLinesPerLevel = { 1, 2, 3 };
 

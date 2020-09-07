@@ -11,15 +11,18 @@ namespace Power.Domain
     [CreateAssetMenu(fileName = "Haste", menuName = "Powers/Dark/Haste", order = 1)]
     public class Haste : DarkPower
     {
+        [Header("Idle time spent before checking if all the new line are already generated")]
+        [SerializeField]
+        private float stopAccelerationCheckDelay = 0.3f;
+
+        [Header("Internal state - do not assign")]
         [SerializeField]
         private float speedMultiplier;
 
         [SerializeField]
         private int newLineLimit;
 
-        [SerializeField]
-        private float stopAccelerationCheckDelay = 0.3f;
-
+        [Header("Scaling values - tweak for balancing")]
         [SerializeField]
         private float[] speedMultiplierPerLevel = { 2, 4, 6 };
 

@@ -11,9 +11,11 @@ namespace Power.Domain
     [CreateAssetMenu(fileName = "Shield", menuName = "Powers/Light/Shield", order = 1)]
     public class Shield : LightPower
     {
+        [Header("Internal state - do not assign")]
         [SerializeField]
         private float duration;
 
+        [Header("Scaling values - tweak for balancing")]
         [SerializeField]
         private float[] durationPerLevel = { 3, 5, 10 };
 

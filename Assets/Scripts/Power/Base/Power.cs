@@ -14,8 +14,7 @@ namespace Power.Base
             protected set => regenPowersLevel = value;
         }
 
-        [Header("Level of powers that will be generated after power execution")]
-        [Tooltip("Set to 0 so no powers are generated")]
+        [Header("Level of powers that will be generated after power execution - for no powers generated, set value to 0")]
         [SerializeField]
         private int regenPowersLevel = 0;
 
