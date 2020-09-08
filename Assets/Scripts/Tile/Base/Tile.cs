@@ -20,7 +20,7 @@ namespace TileController.Base
 
         protected BoardController board;
         public BoardGenerate boardGenerate;
-        
+
         void Awake()
         {
             board = transform.parent.parent.parent.gameObject.GetComponent<BoardController>();
@@ -36,6 +36,11 @@ namespace TileController.Base
 
         // Update is called once per frame
         void Update()
+        {
+            updateCurrentPosition();
+        }
+
+        protected virtual void updateCurrentPosition()
         {
             setTileName();
 
@@ -105,7 +110,8 @@ namespace TileController.Base
                     nextTile = board.getTileComponent(nextTile._position + directions[i]);
                     if (nextTile == null || nextTile.typeTile != this.typeTile || nextTile.inMatch || nextTile.typeTile == TileTypes.Obstacle)
                     {
-                        if (nextTile != null && nextTile.typeTile == TileTypes.Obstacle) {
+                        if (nextTile != null && nextTile.typeTile == TileTypes.Obstacle)
+                        {
                             if (tilesMatch.Count > 2) StartCoroutine(nextTile.destroyTile());
                         }
                         break;
@@ -115,9 +121,11 @@ namespace TileController.Base
             }
             if (tilesMatch.Count > 2)
             {
-                if(directions[0].Equals(Vector2Int.left)){
+                if (directions[0].Equals(Vector2Int.left))
+                {
                     Tile upTile = board.getTileComponent(_position + Vector2Int.down);
-                    if(upTile != null && upTile.typeTile == TileTypes.Obstacle) {
+                    if (upTile != null && upTile.typeTile == TileTypes.Obstacle)
+                    {
                         StartCoroutine(upTile.destroyTile());
                     }
                 }
@@ -167,7 +175,8 @@ namespace TileController.Base
             {
                 upTile.fallTile();
             }
-            if(typeTile == TileTypes.Obstacle) {
+            if (typeTile == TileTypes.Obstacle)
+            {
                 boardGenerate.createLine(_position.y);
             }
             Destroy(gameObject);

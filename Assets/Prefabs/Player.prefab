@@ -446,7 +446,7 @@ MonoBehaviour:
   lowerTilePosition: {x: 0, y: 0, z: 0}
   bottomOfBoardOffSet: 0
   boardTransform: {fileID: 8059745348551603301}
-  moveUpSpeed: 0.5
+  moveUpSpeed: 0.1
 --- !u!114 &8059745349488313586
 MonoBehaviour:
   m_ObjectHideFlags: 0
