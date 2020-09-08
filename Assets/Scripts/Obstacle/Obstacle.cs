@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using Board;
-using TileController;
+using TileController.Base;
 using UnityEngine;
 
 public class Obstacle : Tile
@@ -16,7 +16,6 @@ public class Obstacle : Tile
     }
 
     BoardController boardController;
-    BoardGenerate boardGenerate;
 
     int obstacleSize = 5;
 

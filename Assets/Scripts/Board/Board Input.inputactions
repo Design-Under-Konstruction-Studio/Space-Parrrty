@@ -36,6 +36,22 @@
                     "expectedControlType": "Digital",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Release Light Power",
+                    "type": "Button",
+                    "id": "a1bdd966-e54b-43ee-adfd-d53be3c3bbe1",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Release Dark Power",
+                    "type": "Button",
+                    "id": "2842a3c6-cc96-401b-b23c-e3a042dc2b41",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -124,6 +140,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Create Obstacle",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bfdd40e6-09b2-4c42-9910-d25f2f25f3f4",
+                    "path": "<Keyboard>/o",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Release Light Power",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "af81d714-ed8e-468b-b677-01c1713eeb9b",
+                    "path": "<Keyboard>/p",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Release Dark Power",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

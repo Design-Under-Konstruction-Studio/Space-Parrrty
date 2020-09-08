@@ -1,13 +1,21 @@
 ﻿using System.Collections.Generic;
 using System.Collections;
-using TileController;
+using TileController.Base;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace Board
 {
     public class BoardController : MonoBehaviour
     {
+        #region Properties
+        public int CreatedLines
+        {
+            get => boardGenerate.CreatedLines;
+            private set => CreatedLines = value;
+        }
+
+        #endregion
+
         // Scripts References
         BoardGenerate boardGenerate;
 
@@ -37,14 +45,6 @@ namespace Board
         private void Awake()
         {
             boardGenerate = GetComponent<BoardGenerate>();
-        }
-
-        public void onPlayerReady(InputAction.CallbackContext ctx)
-        {
-            if (ctx.performed)
-            {
-                changeBoardType();
-            }
         }
 
         #region Getter Tiles
@@ -92,9 +92,16 @@ namespace Board
             }
             return lineTile;
         }
+
+        public GameObject[] getTileLineGameObjectAsArray(int positionY)
+        {
+            List<GameObject> tileLine = getTileLineGameObject(positionY);
+            tileLine.RemoveAll(tile => tile == null);
+            return tileLine.ToArray();
+        }
         #endregion
 
-        private void changeBoardType()
+        public void changeBoardType()
         {
             switch (boardStatusTypes)
             {
@@ -149,13 +156,39 @@ namespace Board
                 }
             }
         }
-        public void checkMatchLine(int positionY) {
+
+        public void destroyLine(int yIndex)
+        {
+            GameObject[] lineToBeDestroyed = getTileLineGameObjectAsArray(yIndex);
+            foreach (GameObject tileGameObject in lineToBeDestroyed)
+            {
+                Tile tileToBeDestroyed = tileGameObject.GetComponent<Tile>();
+                tileToBeDestroyed.destroy();
+            }
+        }
+
+        public void accelerate(float speedMultiplier)
+        {
+            moveUpSpeed *= speedMultiplier;
+        }
+
+        public void retard(float speedDivider)
+        {
+            moveUpSpeed /= speedDivider;
+        }
+
+        public void checkMatchLine(int positionY)
+        {
             List<GameObject> lineTiles = getTileLineGameObject(positionY);
-            foreach(GameObject tile in lineTiles) {
-                if(tile != null) {
+            foreach (GameObject tile in lineTiles)
+            {
+                if (tile != null)
+                {
                     tile.GetComponent<Tile>().findMatch();
                 }
             }
+
+
         }
     }
 }
