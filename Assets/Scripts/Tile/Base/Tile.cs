@@ -165,6 +165,7 @@ namespace TileController.Base
         {
             canMove = false;
             inMatch = true;
+            onDestroy();
             Color tileColor = GetComponent<SpriteRenderer>().color;
             GetComponent<SpriteRenderer>().color = new Color(tileColor.r, tileColor.g, tileColor.b, 0.5f);
             yield return new WaitForSeconds(DESTRUCTION_DELAY);
@@ -174,10 +175,6 @@ namespace TileController.Base
             if (upTile != null)
             {
                 upTile.fallTile();
-            }
-            if (typeTile == TileTypes.Obstacle)
-            {
-                boardGenerate.createLine(_position.y);
             }
             Destroy(gameObject);
         }
@@ -189,6 +186,11 @@ namespace TileController.Base
         #endregion
 
         protected virtual void onMatchFound(int level)
+        {
+
+        }
+
+        virtual protected void onDestroy()
         {
 
         }
