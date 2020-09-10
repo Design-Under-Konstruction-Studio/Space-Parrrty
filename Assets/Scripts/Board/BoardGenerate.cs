@@ -28,7 +28,9 @@ namespace Board
         public Vector2Int startTileSize;
 
         [Header("Internal State")]
-        public int createdLines;
+        [SerializeField]
+        private Queue<Obstacle> createdObstacles = new Queue<Obstacle>();
+        private int createdLines;
 
         private void Awake()
         {
@@ -105,6 +107,8 @@ namespace Board
 
             obstacle.setPosition(new Vector2Int(0, boardController.topOfBoard));
             obstacle.fallTile();
+
+            createdObstacles.Enqueue(obstacle);
         }
 
         public void createDownLine()
