@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 185980575943299017}
   - component: {fileID: 185980575943299016}
-  - component: {fileID: 185980575943298871}
   m_Layer: 0
   m_Name: Player Camera
   m_TagString: MainCamera
@@ -75,14 +74,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &185980575943298871
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 185980575943298870}
-  m_Enabled: 1
 --- !u!1 &7120673343873392836
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,7 +83,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4646516399930111704}
-  - component: {fileID: 7250144283300264948}
+  - component: {fileID: 7151127660162286826}
+  - component: {fileID: 7772934403525571646}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -116,7 +108,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7250144283300264948
+--- !u!114 &7151127660162286826
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -125,13 +117,154 @@ MonoBehaviour:
   m_GameObject: {fileID: 7120673343873392836}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 100f0347a52f1d043bc00a7c4858ca0c, type: 3}
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerRepository: {fileID: 11400000, guid: 551d569c726436544adf8dca9a4d0fa5, type: 2}
-  powers:
-  - {fileID: 0}
-  - {fileID: 0}
+  m_Actions: {fileID: -944628639613478452, guid: e2a130558b3cbc34081a549ce1c54356,
+    type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7772934403525571646}
+        m_MethodName: move
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 34645844-3dca-4ca4-b731-02e801fd2e5a
+    m_ActionName: Control/Move[/Keyboard/s,/Keyboard/w,/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7772934403525571646}
+        m_MethodName: changeTilePosition
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 7e8bc24d-c568-4f72-8801-f88d563c1d3b
+    m_ActionName: Control/Change Tile[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7772934403525571646}
+        m_MethodName: changeBoardState
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 4d8e8377-9b6f-499e-bbd5-46161ffb7606
+    m_ActionName: Control/Change Board State[/Keyboard/z]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7772934403525571646}
+        m_MethodName: createObstacle
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 517de8fa-51ec-4464-8d01-e42dc83240f2
+    m_ActionName: Control/Create Obstacle[/Keyboard/x]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7772934403525571646}
+        m_MethodName: useLightPower
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: a1bdd966-e54b-43ee-adfd-d53be3c3bbe1
+    m_ActionName: Control/Release Light Power[/Keyboard/o]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7772934403525571646}
+        m_MethodName: useDarkPower
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 2842a3c6-cc96-401b-b23c-e3a042dc2b41
+    m_ActionName: Control/Release Dark Power[/Keyboard/p]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Control
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 185980575943299016}
+--- !u!114 &7772934403525571646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7120673343873392836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5954f2f10ff679c42ac63dd3069ccd2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boardController: {fileID: 0}
+  boardGenerator: {fileID: 0}
+  picker: {fileID: 0}
+  playerHub: {fileID: 0}
+  powerInventory:
+    lightPowerRepository:
+    - {fileID: 11400000, guid: 92bc9040aacd34b46b108704395503ab, type: 2}
+    darkPowerRepository:
+    - {fileID: 11400000, guid: 8b70b3ba0f4eb8445b89564f560c21f0, type: 2}
+    onPowerAcquired: {fileID: 11400000, guid: b0a3e46488d94b44385a057cf7dedaa1, type: 2}
+    lightPower: {fileID: 0}
+    darkPower: {fileID: 0}
+  powerExecutor:
+    player: {fileID: 0}
+    boardController: {fileID: 0}
+    powerInventory:
+      lightPowerRepository: []
+      darkPowerRepository: []
+      onPowerAcquired: {fileID: 0}
+      lightPower: {fileID: 0}
+      darkPower: {fileID: 0}
+    hub: {fileID: 0}
+    isShielded: 0
+    isFrozen: 0
 --- !u!1 &8059745348100595638
 GameObject:
   m_ObjectHideFlags: 0
@@ -143,7 +276,6 @@ GameObject:
   - component: {fileID: 8059745348100595637}
   - component: {fileID: 8059745348100595643}
   - component: {fileID: 8059745348100595636}
-  - component: {fileID: 8059745349585425350}
   m_Layer: 0
   m_Name: Picker
   m_TagString: Untagged
@@ -228,97 +360,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8059745349585425350
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8059745348100595638}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: e2a130558b3cbc34081a549ce1c54356,
-    type: 3}
-  m_NotificationBehavior: 2
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents:
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8059745348100595643}
-        m_MethodName: move
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 34645844-3dca-4ca4-b731-02e801fd2e5a
-    m_ActionName: Control/Move[/Keyboard/s,/Keyboard/w,/Keyboard/a,/Keyboard/d]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8059745348100595643}
-        m_MethodName: changeTilePosition
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 7e8bc24d-c568-4f72-8801-f88d563c1d3b
-    m_ActionName: Control/Change Tile[/Keyboard/space]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8059745349488313580}
-        m_MethodName: onPlayerReady
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 4d8e8377-9b6f-499e-bbd5-46161ffb7606
-    m_ActionName: Control/Change Board State[/Keyboard/z]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8059745349488313586}
-        m_MethodName: onObstacleAsked
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 517de8fa-51ec-4464-8d01-e42dc83240f2
-    m_ActionName: Control/Create Obstacle[/Keyboard/x]
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Control
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 185980575943299016}
 --- !u!1 &8059745348551603301
 GameObject:
   m_ObjectHideFlags: 0
@@ -405,7 +446,7 @@ MonoBehaviour:
   lowerTilePosition: {x: 0, y: 0, z: 0}
   bottomOfBoardOffSet: 0
   boardTransform: {fileID: 8059745348551603301}
-  moveUpSpeed: 0.02
+  moveUpSpeed: 0.1
 --- !u!114 &8059745349488313586
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -427,7 +468,8 @@ MonoBehaviour:
   - {fileID: 1031957327162153119, guid: 21b7fed7f96fa3d4392f0922e69baf76, type: 3}
   _obstaclePrefab: {fileID: 8616844182575842880, guid: 9e317dfc19011164c886c21747e6bfa6,
     type: 3}
-  startTileSize: {x: 5, y: 6}
+  startTileSize: {x: 5, y: 2}
+  createdLines: 0
 --- !u!114 &8059745349488313585
 MonoBehaviour:
   m_ObjectHideFlags: 0
