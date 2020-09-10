@@ -17,7 +17,8 @@ namespace Board
         #endregion
 
         // Scripts References
-        BoardGenerate boardGenerate;
+        [HideInInspector]
+        public BoardGenerate boardGenerate;
 
         [Header("Board Settings")]
         public BoardStatusTypes boardStatusTypes;

@@ -108,11 +108,19 @@ namespace Player.Power
             return lineIndex;
         }
 
+        public void createObstacle() {
+            boardController.boardGenerate.createObstacle();
+        }
+
         public void destroyLine(int breakableLineIndex)
         {
             boardController.destroyLine(breakableLineIndex);
         }
 
+        public void createLine(int createLineIndex) {
+
+        }
+        
         public int accelerateBoard(float speedMultiplier)
         {
             boardController.accelerate(speedMultiplier);
