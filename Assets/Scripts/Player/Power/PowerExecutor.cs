@@ -116,10 +116,6 @@ namespace Player.Power
         {
             boardController.destroyLine(breakableLineIndex);
         }
-
-        public void createLine(int createLineIndex) {
-
-        }
         
         public int accelerateBoard(float speedMultiplier)
         {

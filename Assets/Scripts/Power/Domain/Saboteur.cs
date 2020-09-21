@@ -10,12 +10,12 @@ namespace Power.Domain
     {
         [Header("Internal state - do not assign")]
         [SerializeField]
-        private int quantityObstacleLimit = 3;
+        private int quantityObstacleLimit = 2;
         private int quantityOfObstacle;
         
         [Header("Scaling values - tweak for balancing")]
         [SerializeField]
-        private int[] quantityObstaclePerLevel = { 1, 2, 3 };
+        private int[] quantityObstaclePerLevel = { 1, 2 };
         private Saboteur(int level)
         {
             quantityOfObstacle = quantityObstaclePerLevel[level];
@@ -28,8 +28,10 @@ namespace Power.Domain
 
         override public IEnumerator execute(PowerExecutor executor)
         {
-            executor.createObstacle();
-            yield return new WaitForSeconds(0);
+            for(int i = 0; i < quantityOfObstacle; i++) {
+                yield return new WaitForSeconds(1);
+                executor.createObstacle();
+            }
         }
     }
 }
