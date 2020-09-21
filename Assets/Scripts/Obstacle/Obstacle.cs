@@ -26,6 +26,13 @@ public class Obstacle : Tile
         boardGenerate = transform.parent.parent.parent.gameObject.GetComponent<BoardGenerate>();
     }
 
+    override protected void updateCurrentPosition()
+    {
+        setTileName();
+
+        transform.localPosition = new Vector3(_position.x + obstacleSize / 2, -(_position.y), 0);
+    }
+
     override public void setPosition(Vector2Int position)
     {
         _position = position;
@@ -75,6 +82,17 @@ public class Obstacle : Tile
             });
 
             fallTile();
+        }
+    }
+
+    protected override void onDestroy()
+    {
+        boardGenerate.createLine(_position.y);
+
+        Tile upTile = board.getTileComponent(this._position + Vector2Int.down);
+        if (upTile != null && upTile.typeTile == TileTypes.Obstacle && !upTile.inMatch)
+        {
+            StartCoroutine(upTile.destroyTile());
         }
     }
 }

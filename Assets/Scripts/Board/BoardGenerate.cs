@@ -96,9 +96,15 @@ namespace Board
 
         public void createObstacle()
         {
-            GameObject obstacle = Instantiate(_obstaclePrefab, new Vector3(100, 100, 100), Quaternion.identity, boardController.tilesObjects.transform);
-            obstacle.GetComponent<Obstacle>().setPosition(new Vector2Int(0, boardController.topOfBoard));
-            obstacle.GetComponent<Obstacle>().fallTile();
+            GameObject obstacleGO = Instantiate(_obstaclePrefab, new Vector3(100, 100, 100), Quaternion.identity, boardController.tilesObjects.transform);
+            Obstacle obstacle = obstacleGO.GetComponent<Obstacle>();
+
+            Vector2 obstacleScale = obstacleGO.transform.localScale;
+            obstacleScale.x *= obstacle.ObstacleSize;
+            obstacleGO.transform.localScale = obstacleScale;
+
+            obstacle.setPosition(new Vector2Int(0, boardController.topOfBoard));
+            obstacle.fallTile();
         }
 
         public void createDownLine()
