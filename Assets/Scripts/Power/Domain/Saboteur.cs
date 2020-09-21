@@ -8,9 +8,6 @@ namespace Power.Domain
     [CreateAssetMenu(fileName = "Saboteur", menuName = "Powers/Dark/Saboteur", order = 1)]
     public class Saboteur : DarkPower
     {
-        [Header("Internal state - do not assign")]
-        [SerializeField]
-        private int quantityObstacleLimit = 2;
         private int quantityOfObstacle;
         
         [Header("Scaling values - tweak for balancing")]
