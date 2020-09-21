@@ -437,6 +437,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c7f31407a13be0418cfbb0e564e110f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boardGenerate: {fileID: 0}
   boardStatusTypes: 0
   boardSize: {x: 5, y: 8}
   tilesObjects: {fileID: 0}
