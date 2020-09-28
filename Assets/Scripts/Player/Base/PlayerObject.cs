@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-using Board;
+using Board.Behaviour;
 
 using Power.Base;
 
@@ -64,7 +64,7 @@ namespace Player.Base
             {
                 Vector2Int movementDirection = new Vector2Int((int)ctx.ReadValue<Vector2>().x, -(int)ctx.ReadValue<Vector2>().y);
                 Vector2Int newPosition = picker.getNewPosition(movementDirection);
-                if (picker.canMovePosition(newPosition))
+                if (boardController.positionIsInsideOfBoard(newPosition) && boardController.boardStatusTypes == BoardStatusTypes.start)
                 {
                     picker.move(newPosition);
                 }
@@ -91,7 +91,7 @@ namespace Player.Base
         {
             if (ctx.performed)
             {
-                boardGenerator.createObstacle();
+                // boardGenerator.createObstacle();
             }
         }
 

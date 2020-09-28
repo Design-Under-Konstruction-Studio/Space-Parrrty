@@ -6,7 +6,7 @@ using Power.Base;
 
 using Player.Power;
 
-using TileController.Base;
+using Board.Elements.Tile;
 
 namespace Power.Domain
 {

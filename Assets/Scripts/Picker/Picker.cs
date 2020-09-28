@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Board;
-using TileController.Base;
+using Board.Behaviour;
+using Board.Elements.Tile;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -20,20 +20,6 @@ public class Picker : MonoBehaviour
     }
 
     #region Movimentação
-    public bool canMovePosition(Vector2Int newPosition)
-    {
-        if (newPosition.x < board.boardSize.x - 1 &&
-          newPosition.y < board.bottomOfBoard &&
-          newPosition.x >= 0 &&
-          newPosition.y >= board.topOfBoard &&
-          board.boardStatusTypes == BoardStatusTypes.start
-        )
-        {
-            return true;
-        }
-
-        return false;
-    }
 
     public Vector2Int getNewPosition(Vector2Int movementDirection)
     {
@@ -58,24 +44,24 @@ public class Picker : MonoBehaviour
         Tile tileRight = board.getTileComponent(rightPosition);
         Tile tileLeft = board.getTileComponent(leftPosition);
 
-        if ((tileLeft != null && tileLeft.canMove) && (tileRight != null && tileRight.canMove))
+        if ((tileLeft != null && tileLeft.CanMove) && (tileRight != null && tileRight.CanMove))
         {
-            tileLeft.setPosition(rightPosition);
-            tileRight.setPosition(leftPosition);
+            tileLeft.Position = rightPosition;
+            tileRight.Position = leftPosition;
 
             tileRight.findMatch();
             tileLeft.findMatch();
         }
-        else if (tileLeft == null && (tileRight != null && tileRight.canMove))
+        else if (tileLeft == null && (tileRight != null && tileRight.CanMove))
         {
-            board.boardTiles[_position.x + 1, _position.y] = null;
-            tileRight.setPosition(leftPosition);
+            board.boardElements[_position.x + 1, _position.y] = null;
+            tileRight.Position = leftPosition;
             tileRight.findMatch();
         }
-        else if ((tileLeft != null && tileLeft.canMove) && tileRight == null)
+        else if ((tileLeft != null && tileLeft.CanMove) && tileRight == null)
         {
-            board.boardTiles[_position.x, _position.y] = null;
-            tileLeft.setPosition(rightPosition);
+            board.boardElements[_position.x, _position.y] = null;
+            tileLeft.Position = rightPosition;
             tileLeft.findMatch();
         }
 
@@ -83,12 +69,12 @@ public class Picker : MonoBehaviour
         Tile tileLeftUp = board.getTileComponent(leftPosition + Vector2Int.down);
         if (tileRightUp != null)
         {
-            tileRightUp.fallTile();
+            tileRightUp.fall();
             tileRightUp.findMatch();
         }
         if (tileLeftUp != null)
         {
-            tileLeftUp.fallTile();
+            tileLeftUp.fall();
             tileLeftUp.findMatch();
         }
     }

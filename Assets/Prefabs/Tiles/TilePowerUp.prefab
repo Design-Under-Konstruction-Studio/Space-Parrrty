@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1031957327162153113}
   - component: {fileID: 1031957327162153112}
-  - component: {fileID: 1471325949252301281}
+  - component: {fileID: 2490792085492175276}
   m_Layer: 0
   m_Name: TilePowerUp
   m_TagString: Untagged
@@ -81,7 +81,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1471325949252301281
+--- !u!114 &2490792085492175276
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -90,11 +90,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1031957327162153119}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9ad25dd40e3f524f866a53d6dfc5718, type: 3}
+  m_Script: {fileID: 11500000, guid: 7d1b002b7d12f6946b60d1093b6f5788, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boardController: {fileID: 0}
+  boardGenerate: {fileID: 0}
   _position: {x: 0, y: 0}
   canMove: 1
-  inMatch: 0
-  typeTile: 5
-  onPowerAcquired: {fileID: 11400000, guid: b0a3e46488d94b44385a057cf7dedaa1, type: 2}
+  isDestroying: 0
+  tileType: 5

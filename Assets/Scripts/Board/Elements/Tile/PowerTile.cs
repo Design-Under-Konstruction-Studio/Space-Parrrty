@@ -1,17 +1,19 @@
 using UnityEngine;
 
-using TileController.Base;
+using Power.Delegate;
 
-namespace TileController.Power
+namespace Board.Elements.Tile
 {
-    public class PowerTile : Tile
+    public abstract class PowerTile : Tile
     {
         [SerializeField]
         private OnPowerAcquired onPowerAcquired;
 
+        #region Implementation layer
         override protected void onMatchFound(int level)
         {
             onPowerAcquired.trigger(level);
         }
+        #endregion
     }
 }
