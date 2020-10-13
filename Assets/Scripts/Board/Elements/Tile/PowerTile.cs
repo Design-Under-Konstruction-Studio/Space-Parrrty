@@ -4,7 +4,7 @@ using Power.Delegate;
 
 namespace Board.Elements.Tile
 {
-    public abstract class PowerTile : Tile
+    public class PowerTile : Tile
     {
         [SerializeField]
         private OnPowerAcquired onPowerAcquired;
