@@ -1,8 +1,7 @@
 using UnityEngine;
 
 using Power.Base;
-
-using TileController.Power;
+using Power.Delegate;
 
 namespace Player.Power
 {

@@ -1,10 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using TileController.Base;
+using Board.Elements.Tile;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Board
+namespace Board.Behaviour
 {
     public class BoardGenerate : MonoBehaviour
     {
@@ -43,7 +43,7 @@ namespace Board
 
         public void CreateBoard()
         {
-            boardController.boardTiles = new GameObject[boardController.boardSize.x, 1000];
+            boardController.boardElements = new GameObject[boardController.boardSize.x, 1000];
             boardController.bottomOfBoardOffSet = boardController.boardSize.y + 2;
 
             boardController.tilesObjects = new GameObject();
@@ -65,8 +65,8 @@ namespace Board
 
                     int randomTile = Random.Range(0, possibleTile.Count);
                     GameObject tile = Instantiate(possibleTile[randomTile], boardController.tilesObjects.transform);
-                    tile.GetComponent<Tile>().setPosition(new Vector2Int(x, y));
-                    boardController.boardTiles[x, y] = tile;
+                    tile.GetComponent<Tile>().Position = new Vector2Int(x, y);
+                    boardController.boardElements[x, y] = tile;
 
                     lastLine[x] = possibleTile[randomTile];
                     lastTile = possibleTile[randomTile];
@@ -88,24 +88,24 @@ namespace Board
 
                 int randomTile = Random.Range(0, possibleTile.Count);
                 GameObject tile = Instantiate(possibleTile[randomTile], new Vector3(100, 100, 100), Quaternion.identity, boardController.tilesObjects.transform);
-                tile.GetComponent<Tile>().setPosition(new Vector2Int(x, positionY));
-                boardController.boardTiles[x, positionY] = tile;
-                tile.GetComponent<Tile>().fallTile();
+                tile.GetComponent<Tile>().Position = new Vector2Int(x, positionY);
+                boardController.boardElements[x, positionY] = tile;
+                tile.GetComponent<Tile>().fall();
             }
         }
 
-        public void createObstacle()
-        {
-            GameObject obstacleGO = Instantiate(_obstaclePrefab, new Vector3(100, 100, 100), Quaternion.identity, boardController.tilesObjects.transform);
-            Obstacle obstacle = obstacleGO.GetComponent<Obstacle>();
+        // public void createObstacle()
+        // {
+        //     GameObject obstacleGO = Instantiate(_obstaclePrefab, new Vector3(100, 100, 100), Quaternion.identity, boardController.tilesObjects.transform);
+        //     Obstacle obstacle = obstacleGO.GetComponent<Obstacle>();
 
-            Vector2 obstacleScale = obstacleGO.transform.localScale;
-            obstacleScale.x *= obstacle.ObstacleSize;
-            obstacleGO.transform.localScale = obstacleScale;
+        //     Vector2 obstacleScale = obstacleGO.transform.localScale;
+        //     obstacleScale.x *= obstacle.ObstacleSize;
+        //     obstacleGO.transform.localScale = obstacleScale;
 
-            obstacle.setPosition(new Vector2Int(0, boardController.topOfBoard));
-            obstacle.fallTile();
-        }
+        //     obstacle.Position = new Vector2Int(0, boardController.topOfBoard);
+        //     obstacle.fall();
+        // }
 
         public void createDownLine()
         {
@@ -122,8 +122,8 @@ namespace Board
 
                 int randomTile = Random.Range(0, possibleTile.Count);
                 GameObject tile = Instantiate(possibleTile[randomTile], new Vector3(100, 100, 100), Quaternion.identity, boardController.tilesObjects.transform);
-                tile.GetComponent<Tile>().setPosition(new Vector2Int(x, boardController.bottomOfBoardOffSet));
-                boardController.boardTiles[x, boardController.bottomOfBoardOffSet] = tile;
+                tile.GetComponent<Tile>().Position = new Vector2Int(x, boardController.bottomOfBoardOffSet);
+                boardController.boardElements[x, boardController.bottomOfBoardOffSet] = tile;
 
                 lastLine[x] = possibleTile[randomTile];
                 lastTile = possibleTile[randomTile];

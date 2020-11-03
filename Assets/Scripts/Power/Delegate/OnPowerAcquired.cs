@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace TileController.Power
+namespace Power.Delegate
 {
     [CreateAssetMenu(fileName = "On Power Acquired", menuName = "Powers/Events/On Power Acquired", order = 1)]
     public class OnPowerAcquired : ScriptableObject

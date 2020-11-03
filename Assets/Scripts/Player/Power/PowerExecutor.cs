@@ -5,7 +5,7 @@ using Power.Base;
 using Player.Base;
 using Player.Multiplayer;
 
-using Board;
+using Board.Behaviour;
 
 namespace Player.Power
 {
@@ -108,15 +108,16 @@ namespace Player.Power
             return lineIndex;
         }
 
-        public void createObstacle() {
-            boardController.boardGenerate.createObstacle();
+        public void createObstacle()
+        {
+            // boardController.boardGenerate.createObstacle();
         }
 
         public void destroyLine(int breakableLineIndex)
         {
             boardController.destroyLine(breakableLineIndex);
         }
-        
+
         public int accelerateBoard(float speedMultiplier)
         {
             boardController.accelerate(speedMultiplier);

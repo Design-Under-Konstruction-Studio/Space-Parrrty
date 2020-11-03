@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1515395633349705957}
   - component: {fileID: 1515395633349705956}
-  - component: {fileID: 4165979304330423045}
+  - component: {fileID: 7867553326889914440}
   m_Layer: 0
   m_Name: TileGreen
   m_TagString: Untagged
@@ -81,7 +81,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4165979304330423045
+--- !u!114 &7867553326889914440
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -90,10 +90,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1515395633349705955}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da228e0dbcf7fba4895e921184047a98, type: 3}
+  m_Script: {fileID: 11500000, guid: 7d1b002b7d12f6946b60d1093b6f5788, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boardController: {fileID: 0}
+  boardGenerate: {fileID: 0}
   _position: {x: 0, y: 0}
   canMove: 1
-  inMatch: 0
-  typeTile: 2
+  isDestroying: 0
+  tileType: 2
