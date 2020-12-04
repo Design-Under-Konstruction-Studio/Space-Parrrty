@@ -122,14 +122,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 8616844182575842880}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f99a8a570de4b6546b91134924f816b2, type: 3}
+  m_Script: {fileID: 11500000, guid: 47e404ee3d2e5bf46a4070f4a9a1024c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _position: {x: 0, y: 0}
-  canMove: 0
-  inMatch: 0
-  typeTile: 6
+  boardController: {fileID: 0}
   boardGenerate: {fileID: 0}
+  _position: {x: 0, y: 0}
+  canMove: 1
+  isDestroying: 0
 --- !u!212 &6224428930797656318
 SpriteRenderer:
   m_ObjectHideFlags: 0

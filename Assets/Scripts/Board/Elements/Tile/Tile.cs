@@ -26,14 +26,15 @@ namespace Board.Elements.Tile
             Vector2Int bottomPosition = _position + Vector2Int.up;
             if (bottomPosition.y < boardController.bottomOfBoard)
             {
-                Tile bottomTile = boardController.getTileComponent(_position + Vector2Int.up);
-                Tile upTile = boardController.getTileComponent(_position + Vector2Int.down);
+                BoardElement bottomTile = boardController.getTileComponent(_position + Vector2Int.up);
+                BoardElement upTile = boardController.getTileComponent(_position + Vector2Int.down);
                 if (bottomTile == null)
                 {
                     boardController.boardElements[_position.x, _position.y] = null;
                     Position = bottomPosition;
                     if (upTile != null)
                     {
+                        Debug.Log(upTile.name);
                         upTile.fall();
                     }
                     fall();

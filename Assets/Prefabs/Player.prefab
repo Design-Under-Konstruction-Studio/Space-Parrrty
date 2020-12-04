@@ -460,8 +460,9 @@ MonoBehaviour:
   - {fileID: 1031957327162153119, guid: 21b7fed7f96fa3d4392f0922e69baf76, type: 3}
   - {fileID: 1515395633349705955, guid: eb1af6ea225b8634aadc9d77df52e33b, type: 3}
   - {fileID: 1515395633349705955, guid: 1e65a51f3b2b86d42a3172f43bc3fe6c, type: 3}
-  _obstaclePrefab: {fileID: 0}
-  startTileSize: {x: 5, y: 8}
+  _obstaclePrefab: {fileID: 8616844182575842880, guid: 9e317dfc19011164c886c21747e6bfa6,
+    type: 3}
+  startTileSize: {x: 5, y: 6}
   createdLines: 0
 --- !u!114 &3130284898243713114
 MonoBehaviour:

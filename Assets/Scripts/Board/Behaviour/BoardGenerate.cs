@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using Board.Elements.Tile;
+using Board.Elements.Obstacle;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -94,18 +95,18 @@ namespace Board.Behaviour
             }
         }
 
-        // public void createObstacle()
-        // {
-        //     GameObject obstacleGO = Instantiate(_obstaclePrefab, new Vector3(100, 100, 100), Quaternion.identity, boardController.tilesObjects.transform);
-        //     Obstacle obstacle = obstacleGO.GetComponent<Obstacle>();
+        public void createObstacle()
+        {
+            GameObject obstacleGO = Instantiate(_obstaclePrefab, new Vector3(100, 100, 100), Quaternion.identity, boardController.tilesObjects.transform);
+            Obstacle obstacle = obstacleGO.GetComponent<Obstacle>();
 
-        //     Vector2 obstacleScale = obstacleGO.transform.localScale;
-        //     obstacleScale.x *= obstacle.ObstacleSize;
-        //     obstacleGO.transform.localScale = obstacleScale;
+            Vector2 obstacleScale = obstacleGO.transform.localScale;
+            // obstacleScale.x *= obstacle.ObstacleSize;
+            obstacleGO.transform.localScale = obstacleScale;
 
-        //     obstacle.Position = new Vector2Int(0, boardController.topOfBoard);
-        //     obstacle.fall();
-        // }
+            obstacle.Position = new Vector2Int(0, boardController.topOfBoard);
+            obstacle.fall();
+        }
 
         public void createDownLine()
         {

@@ -91,7 +91,7 @@ namespace Player.Base
         {
             if (ctx.performed)
             {
-                // boardGenerator.createObstacle();
+                boardGenerator.createObstacle();
             }
         }
 
