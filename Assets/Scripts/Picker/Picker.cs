@@ -1,9 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Board.Behaviour;
+﻿using Board.Behaviour;
 using Board.Elements.Tile;
+using Board.Elements.Base;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class Picker : MonoBehaviour
 {
@@ -65,8 +63,8 @@ public class Picker : MonoBehaviour
             tileLeft.findMatch();
         }
 
-        Tile tileRightUp = board.getTileComponent(rightPosition + Vector2Int.down);
-        Tile tileLeftUp = board.getTileComponent(leftPosition + Vector2Int.down);
+        BoardElement tileRightUp = board.getBoardElement(rightPosition + Vector2Int.down);
+        BoardElement tileLeftUp = board.getBoardElement(leftPosition + Vector2Int.down);
         if (tileRightUp != null)
         {
             tileRightUp.fall();

@@ -26,15 +26,14 @@ namespace Board.Elements.Tile
             Vector2Int bottomPosition = _position + Vector2Int.up;
             if (bottomPosition.y < boardController.bottomOfBoard)
             {
-                BoardElement bottomTile = boardController.getTileComponent(_position + Vector2Int.up);
-                BoardElement upTile = boardController.getTileComponent(_position + Vector2Int.down);
+                BoardElement bottomTile = boardController.getBoardElement(_position + Vector2Int.up);
+                BoardElement upTile = boardController.getBoardElement(_position + Vector2Int.down);
                 if (bottomTile == null)
                 {
                     boardController.boardElements[_position.x, _position.y] = null;
                     Position = bottomPosition;
                     if (upTile != null)
                     {
-                        Debug.Log(upTile.name);
                         upTile.fall();
                     }
                     fall();
@@ -80,7 +79,7 @@ namespace Board.Elements.Tile
         #endregion
 
         #region Matchmaking
-        public void findMatch()
+        override public void findMatch()
         {
             StartCoroutine(findMatchCR());
         }

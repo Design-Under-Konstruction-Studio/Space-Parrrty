@@ -99,6 +99,7 @@ namespace Board.Elements.Base
         abstract public void onPickerActivated(Vector2Int selectedNeighbourPosition);
         abstract public void onDestructionBelow();
         abstract public void fall();
+        abstract public void findMatch();
         abstract protected void updateCurrentPosition();
         abstract protected void onPositionSet();
         abstract protected void setElementName();

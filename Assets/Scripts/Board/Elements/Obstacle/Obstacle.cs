@@ -24,14 +24,14 @@ namespace Board.Elements.Obstacle {
         }
         
         override public void onDestructionBelow() {
-
+            fall();
         }
         override public void fall() {
             Vector2Int bottomPosition = _position + Vector2Int.up;
             if (bottomPosition.y < boardController.bottomOfBoard)
             {
-                BoardElement bottomTile = boardController.getTileComponent(_position + Vector2Int.up);
-                BoardElement upTile = boardController.getTileComponent(_position + Vector2Int.down);
+                BoardElement bottomTile = boardController.getBoardElement(_position + Vector2Int.up);
+                BoardElement upTile = boardController.getBoardElement(_position + Vector2Int.down);
                 if (bottomTile == null)
                 {
                     boardController.boardElements[_position.x, _position.y] = null;
@@ -43,6 +43,10 @@ namespace Board.Elements.Obstacle {
                     fall();
                 }
             }
+        }
+        
+        override public void findMatch() {
+
         }
         
         override protected void onBeforeDestroy() {
